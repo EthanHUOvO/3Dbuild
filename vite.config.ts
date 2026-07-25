@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [
     sites(),
     cloudflare({
+      viteEnvironment: { name: "server" },
       config: {
         main: "./worker/index.ts",
         compatibility_date: "2026-05-22",

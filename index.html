@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="古建筑模块化拆解、装配与语义修复三维研究演示"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Modular Heritage Assembly" />
+    <meta
+      property="og:description"
+      content="古建筑模块化拆解、装配与语义修复三维研究演示"
+    />
+    <meta property="og:image" content="/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Modular Heritage Assembly" />
+    <meta
+      name="twitter:description"
+      content="古建筑模块化拆解、装配与语义修复三维研究演示"
+    />
+    <meta name="twitter:image" content="/og.png" />
+    <title>Modular Heritage Assembly</title>
+  </head>
+  <body>
+    <div id="app" class="app-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <div class="brand-mark" aria-hidden="true"><span>构</span></div>
+          <div>
+            <div class="eyebrow">DIGITAL HERITAGE · STRUCTURAL ATLAS</div>
+            <h1>Modular Heritage Assembly</h1>
+            <p>古建筑模块化拆解、装配与语义修复演示</p>
+          </div>
+        </div>
+        <nav class="mode-switch" aria-label="演示模式">
+          <button class="mode-btn active" data-mode="structure">结构演示</button>
+          <button class="mode-btn" data-mode="repair">结构缺陷与修复</button>
+        </nav>
+        <div class="top-stats">
+          <div><strong id="visible-count">0</strong><span>可见构件</span></div>
+          <div><strong id="total-count">0</strong><span>语义节点</span></div>
+          <div class="live-dot"><i></i><span>实时图谱</span></div>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <aside class="panel left-panel">
+          <section class="panel-section">
+            <div class="section-heading">
+              <div>
+                <span class="section-index">01</span>
+                <h2>构件图层</h2>
+              </div>
+              <button id="toggle-all" class="text-action">全部隐藏</button>
+            </div>
+            <div id="type-filters" class="type-filters"></div>
+          </section>
+
+          <section class="panel-section compact">
+            <div class="section-heading">
+              <div>
+                <span class="section-index">02</span>
+                <h2>视图分析</h2>
+              </div>
+            </div>
+            <button id="isolate-layer" class="wide-action" disabled>
+              只查看所选构件层
+            </button>
+            <button id="show-all" class="wide-action secondary">
+              恢复全部图层
+            </button>
+          </section>
+
+          <section class="panel-section legend-section">
+            <div class="section-heading">
+              <div>
+                <span class="section-index">03</span>
+                <h2>状态图例</h2>
+              </div>
+            </div>
+            <div class="legend-grid">
+              <span><i class="legend-swatch selected"></i>当前选择</span>
+              <span><i class="legend-swatch candidate"></i>修复候选</span>
+              <span><i class="legend-swatch invalid"></i>关系异常</span>
+              <span><i class="legend-swatch normal"></i>有效节点</span>
+            </div>
+          </section>
+        </aside>
+
+        <section id="viewport" class="viewport" aria-label="三维寺庙场景">
+          <canvas id="scene-canvas"></canvas>
+          <div id="loading" class="loading-screen">
+            <div class="loader-symbol"><span></span><span></span><span></span></div>
+            <strong>正在构建木构语义图谱</strong>
+            <small>GENERATING PROCEDURAL ASSEMBLY</small>
+          </div>
+          <div class="viewport-chrome">
+            <div class="view-label">
+              <span>视图 / VIEW</span>
+              <strong id="view-mode-label">完整结构 · AXONOMETRIC</strong>
+            </div>
+            <div class="axis-indicator" aria-hidden="true">
+              <i class="axis-y"></i><i class="axis-x"></i><i class="axis-z"></i>
+              <span class="label-y">Y</span><span class="label-x">X</span><span class="label-z">Z</span>
+            </div>
+          </div>
+          <div class="scene-tools">
+            <button id="reset-camera" title="重置视角">⌂</button>
+            <button id="toggle-grid" title="显示或隐藏网格">#</button>
+            <button id="help-button" title="操作帮助">?</button>
+          </div>
+          <div id="toast" class="toast" role="status"></div>
+          <div id="help-popover" class="help-popover hidden">
+            <strong>场景操作</strong>
+            <p>左键旋转 · 滚轮缩放 · 右键平移</p>
+            <p>悬停高亮 · 单击选择 · 单击空白取消</p>
+            <button id="close-help">知道了</button>
+          </div>
+          <div class="scale-bar"><span></span><em>10 m</em></div>
+        </section>
+
+        <aside class="panel right-panel">
+          <section class="panel-section selection-section">
+            <div class="section-heading">
+              <div>
+                <span class="section-index">04</span>
+                <h2>构件档案</h2>
+              </div>
+              <span id="selection-count" class="selection-count">0 SELECTED</span>
+            </div>
+            <div id="empty-selection" class="empty-state">
+              <div class="empty-glyph">+</div>
+              <strong>选择一个建筑构件</strong>
+              <p>在三维场景中单击构件，查看其编号、类别、装配层级与语义关系。</p>
+            </div>
+            <div id="component-details" class="component-details hidden">
+              <div class="component-title">
+                <div>
+                  <span id="component-type-tag">COLUMN</span>
+                  <h3 id="component-name">木柱</h3>
+                </div>
+                <span id="component-status" class="status-pill pass">ACTIVE</span>
+              </div>
+              <dl class="property-grid">
+                <div><dt>稳定编号</dt><dd id="component-id">—</dd></div>
+                <div><dt>装配层级</dt><dd id="component-layer">—</dd></div>
+                <div><dt>装配步骤</dt><dd id="component-step">—</dd></div>
+                <div><dt>原始坐标</dt><dd id="component-position">—</dd></div>
+              </dl>
+              <div class="relations">
+                <h4>结构关系</h4>
+                <div><span>SUPPORTED BY</span><p id="supported-by">—</p></div>
+                <div><span>CONNECTED TO</span><p id="connected-to">—</p></div>
+              </div>
+            </div>
+          </section>
+
+          <section id="repair-panel" class="panel-section repair-section hidden">
+            <div class="section-heading">
+              <div>
+                <span class="section-index">05</span>
+                <h2>结构缺陷与修复</h2>
+              </div>
+            </div>
+            <div class="scenario-tabs">
+              <button class="scenario-btn active" data-scenario="dougong">案例 A · 缺失斗拱</button>
+              <button class="scenario-btn" data-scenario="beam">案例 B · 缺失横梁</button>
+            </div>
+            <div class="query-card">
+              <span>RESEARCH QUERY / RQ-01</span>
+              <p>屋面构件是否存在通向柱网和台基的完整支撑路径？</p>
+              <div class="query-result">
+                <i></i>
+                <div><small>QUERY STATUS</small><strong id="query-status">UNKNOWN</strong></div>
+              </div>
+            </div>
+            <div class="impact-summary">
+              <div><span>缺失节点</span><strong id="missing-node">—</strong></div>
+              <div><span>受影响构件</span><strong id="affected-count">0</strong></div>
+              <p id="repair-description">选择预设案例以生成结构缺陷。</p>
+            </div>
+            <div class="repair-actions">
+              <button id="apply-repair" class="primary-action">应用候选修复</button>
+              <button id="reset-scenario" class="icon-action" title="重置案例">↻</button>
+            </div>
+          </section>
+        </aside>
+      </main>
+
+      <footer class="timeline">
+        <div class="timeline-summary">
+          <span>ASSEMBLY SEQUENCE</span>
+          <strong id="assembly-state">完整状态</strong>
+          <small id="assembly-step">STEP 00 / 08</small>
+        </div>
+        <div class="timeline-main">
+          <div class="progress-labels">
+            <span>整体现状</span>
+            <strong id="explosion-value">0%</strong>
+            <span>分层爆炸</span>
+          </div>
+          <input
+            id="explosion-slider"
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            aria-label="爆炸程度"
+          />
+          <div class="stage-track" id="stage-track"></div>
+        </div>
+        <div class="transport-controls">
+          <button id="complete-state">完整状态</button>
+          <button id="auto-assemble">自动装配</button>
+          <button id="pause-resume" class="transport-main" title="暂停或继续">Ⅱ</button>
+          <button id="auto-disassemble">自动拆解</button>
+          <button id="full-explode">全部爆炸</button>
+          <button id="reset-model" class="reset-control">重置模型</button>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

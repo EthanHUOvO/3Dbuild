@@ -1,0 +1,25 @@
+{
+  "name": "modular-heritage-assembly",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "three": "^0.178.0"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "1.37.1",
+    "@types/node": "^22.19.19",
+    "@types/three": "^0.178.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.4"
+  }
+}

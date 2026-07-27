@@ -37,6 +37,7 @@ export default defineConfig({
           input: {
             main: resolve(process.cwd(), "index.html"),
             pavilion: resolve(process.cwd(), "pavilion.html"),
+            restroom: resolve(process.cwd(), "restroom.html"),
           },
         },
       },

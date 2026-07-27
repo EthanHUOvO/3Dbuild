@@ -155,6 +155,8 @@ export class TempleBuilder {
         return new THREE.Vector3(position.x * 0.14, 13, Math.sign(position.z || 1) * 10.5);
       case ComponentType.RIDGE:
         return new THREE.Vector3(position.x * 0.1, 17, position.z * 0.1);
+      default:
+        return radial.multiplyScalar(5).add(new THREE.Vector3(0, 3, 0));
     }
   }
 

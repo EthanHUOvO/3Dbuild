@@ -188,6 +188,7 @@ export class UIController {
       .map((type) => {
         const label = TYPE_LABELS[type];
         const count = this.components.filter(({ data }) => data.componentType === type).length;
+        if (count === 0) return "";
         return `
           <label class="type-row">
             <input class="type-toggle" type="checkbox" data-type="${type}" checked />

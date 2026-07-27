@@ -11,6 +11,14 @@ export enum ComponentType {
   ROOF_PANEL = "ROOF_PANEL",
   RIDGE = "RIDGE",
   ENCLOSURE = "ENCLOSURE",
+  FLOOR = "FLOOR",
+  WALL = "WALL",
+  PARTITION = "PARTITION",
+  FIXTURE = "FIXTURE",
+  VENTILATION = "VENTILATION",
+  PLUMBING = "PLUMBING",
+  SCREEN = "SCREEN",
+  SIGNAGE = "SIGNAGE",
 }
 
 export enum ComponentStatus {
@@ -66,6 +74,14 @@ export const TYPE_LABELS: Record<ComponentType, { zh: string; en: string; color:
   [ComponentType.ROOF_PANEL]: { zh: "屋面", en: "Roof panel", color: "#385f5d" },
   [ComponentType.RIDGE]: { zh: "屋脊", en: "Ridge", color: "#c8a04d" },
   [ComponentType.ENCLOSURE]: { zh: "门窗围护", en: "Enclosure", color: "#7e9b91" },
+  [ComponentType.FLOOR]: { zh: "地坪模块", en: "Floor module", color: "#b9b8af" },
+  [ComponentType.WALL]: { zh: "墙体模块", en: "Wall module", color: "#e2dfd5" },
+  [ComponentType.PARTITION]: { zh: "厕位隔断", en: "Cubicle partition", color: "#576661" },
+  [ComponentType.FIXTURE]: { zh: "卫生洁具", en: "Sanitary fixture", color: "#f0eee7" },
+  [ComponentType.VENTILATION]: { zh: "通风系统", en: "Ventilation", color: "#30c9bc" },
+  [ComponentType.PLUMBING]: { zh: "给排水模块", en: "Plumbing", color: "#557a94" },
+  [ComponentType.SCREEN]: { zh: "入口屏风", en: "Privacy screen", color: "#b98555" },
+  [ComponentType.SIGNAGE]: { zh: "导视标识", en: "Wayfinding", color: "#d7b25f" },
 };
 
 export const DISASSEMBLY_ORDER: ComponentType[][] = [

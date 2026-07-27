@@ -219,6 +219,8 @@ export class PavilionBuilder {
         return radial.multiplyScalar(6.2).add(new THREE.Vector3(0, 1.2, 0));
       case ComponentType.PURLIN:
         return radial.multiplyScalar(6).add(new THREE.Vector3(0, 5.8, 0));
+      default:
+        return radial.multiplyScalar(5).add(new THREE.Vector3(0, 3, 0));
     }
   }
 

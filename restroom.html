@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="现代极简公共厕所的男女分区、通风路径与模块化爆炸图交互演示"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Minimal Public Restroom Assembly" />
+    <meta
+      property="og:description"
+      content="程序化生成的现代公共厕所分区、通风与爆炸装配演示"
+    />
+    <title>Minimal Public Restroom Assembly</title>
+  </head>
+  <body>
+    <div class="restroom-shell">
+      <header class="restroom-topbar">
+        <div class="restroom-brand">
+          <div class="restroom-mark" aria-hidden="true"><span>WC</span></div>
+          <div>
+            <span>PUBLIC FACILITY ASSEMBLY · 03</span>
+            <h1>Minimal Public Restroom Assembly</h1>
+            <p>现代公共厕所分区、通风与模块化爆炸演示</p>
+          </div>
+        </div>
+        <nav class="model-tabs" aria-label="模型切换">
+          <a href="/">大殿 · 252</a>
+          <a href="/pavilion.html">凉亭 · 91</a>
+          <a class="active" href="/restroom.html">公共厕所 · <span id="tab-count">—</span></a>
+        </nav>
+        <div class="restroom-status">
+          <div><strong id="visible-count">—</strong><span>VISIBLE</span></div>
+          <div><strong id="total-count">—</strong><span>COMPONENTS</span></div>
+          <div class="health-indicator"><i></i><span>分区 / 通风有效</span></div>
+        </div>
+      </header>
+
+      <main class="restroom-workspace">
+        <aside class="restroom-panel restroom-left">
+          <section>
+            <div class="panel-heading">
+              <span>01</span>
+              <div><h2>模块类别</h2><small>COMPONENT SYSTEMS</small></div>
+              <button id="show-all">全部显示</button>
+            </div>
+            <div id="type-filters" class="restroom-filters"></div>
+          </section>
+
+          <section>
+            <div class="panel-heading">
+              <span>02</span>
+              <div><h2>使用分区</h2><small>PROGRAM ZONES</small></div>
+            </div>
+            <div class="zone-filters">
+              <label class="male-zone">
+                <input type="checkbox" data-zone="MALE" checked />
+                <i></i><span><strong>男厕</strong><small>MALE ZONE</small></span><em>独立入口</em>
+              </label>
+              <label class="female-zone">
+                <input type="checkbox" data-zone="FEMALE" checked />
+                <i></i><span><strong>女厕</strong><small>FEMALE ZONE</small></span><em>独立入口</em>
+              </label>
+              <label>
+                <input type="checkbox" data-zone="SHARED" checked />
+                <i></i><span><strong>共享结构</strong><small>SHARED / SERVICE</small></span><em>实体分隔</em>
+              </label>
+            </div>
+            <div class="separation-note">
+              <i></i>
+              <p><strong>NO DIRECT SIGHTLINE</strong><span>入口折返屏风遮挡内部视线；男女空间由连续实体墙完全分开。</span></p>
+            </div>
+          </section>
+
+          <section class="ventilation-card">
+            <div class="ventilation-heading">
+              <span>VENTILATION QUERY</span>
+              <button id="ventilation-mode">通风分析</button>
+            </div>
+            <p>两侧空间是否都存在“低位补风 → 室内流动 → 高位机械排风 → 屋顶排出”的连续路径？</p>
+            <div class="vent-status-row">
+              <div><span>男厕路径</span><strong id="male-vent-status">—</strong></div>
+              <div><span>女厕路径</span><strong id="female-vent-status">—</strong></div>
+            </div>
+            <small id="ventilation-note">正在校验通风语义图</small>
+          </section>
+        </aside>
+
+        <section id="viewport" class="restroom-viewport" aria-label="现代公共厕所三维场景">
+          <canvas id="scene-canvas"></canvas>
+          <div id="loading" class="restroom-loading">
+            <div class="plan-loader"><i></i><i></i></div>
+            <strong>正在生成公共设施模块</strong>
+            <span>BUILDING ZONES · FIXTURES · AIR PATHS</span>
+          </div>
+          <div class="viewport-caption">
+            <span>MODEL / 03</span>
+            <strong id="view-label">完整建筑 · AXONOMETRIC</strong>
+          </div>
+          <div class="view-tools">
+            <button id="reset-camera" title="重置视角">⌂</button>
+            <button id="toggle-grid" title="分析网格">#</button>
+            <button id="help-button" title="帮助">?</button>
+          </div>
+          <div class="zone-legend">
+            <span><i class="male"></i>男厕</span>
+            <span><i class="female"></i>女厕</span>
+            <span><i class="air"></i>气流路径</span>
+          </div>
+          <div class="airflow-label">
+            <span>LOW INTAKE</span><i></i><strong>HIGH EXHAUST</strong>
+          </div>
+          <div id="help-panel" class="restroom-help hidden">
+            <strong>交互操作</strong>
+            <p>左键旋转 · 滚轮缩放 · 右键平移</p>
+            <p>悬停高亮 · 单击选择 · 空白处取消</p>
+            <p>“通风分析”会保留分区骨架并突出气流组件。</p>
+            <button id="close-help">知道了</button>
+          </div>
+          <div id="toast" class="restroom-toast" role="status"></div>
+        </section>
+
+        <aside class="restroom-panel restroom-right">
+          <section>
+            <div class="panel-heading">
+              <span>03</span>
+              <div><h2>构件档案</h2><small>SEMANTIC RECORD</small></div>
+              <em id="selection-state">0 SELECTED</em>
+            </div>
+            <div id="empty-selection" class="restroom-empty">
+              <div>+</div>
+              <strong>选择一个建筑模块</strong>
+              <p>查看所属分区、系统类型、支撑来源和通风角色。</p>
+            </div>
+            <div id="component-details" class="restroom-details hidden">
+              <div class="detail-title">
+                <span id="component-type">WALL</span>
+                <h3 id="component-name">墙体模块</h3>
+                <em id="component-status">ACTIVE</em>
+              </div>
+              <dl>
+                <div><dt>稳定编号</dt><dd id="component-id">—</dd></div>
+                <div><dt>所属分区</dt><dd id="component-zone">—</dd></div>
+                <div><dt>建筑系统</dt><dd id="component-system">—</dd></div>
+                <div><dt>通风角色</dt><dd id="component-role">—</dd></div>
+                <div><dt>装配层 / 步骤</dt><dd id="component-layer">—</dd></div>
+                <div><dt>原始坐标</dt><dd id="component-position">—</dd></div>
+              </dl>
+              <div class="detail-relations">
+                <span>SUPPORTED BY</span>
+                <p id="supported-by">—</p>
+                <span>CONNECTED TO</span>
+                <p id="connected-to">—</p>
+              </div>
+              <div id="selected-support-result" class="selected-support-result">
+                <i></i><div><small>FOUNDATION PATH</small><strong>PASS</strong></div>
+              </div>
+              <button id="isolate-layer">只查看当前构件层</button>
+            </div>
+          </section>
+
+          <section>
+            <div class="panel-heading">
+              <span>04</span>
+              <div><h2>功能配置</h2><small>PROGRAM AUDIT</small></div>
+            </div>
+            <div class="program-grid">
+              <div class="male"><strong id="male-wc-count">—</strong><span>男厕坐便</span></div>
+              <div class="male"><strong id="male-urinal-count">—</strong><span>男厕小便器</span></div>
+              <div class="female"><strong id="female-wc-count">—</strong><span>女厕坐便</span></div>
+              <div><strong id="basin-count">—</strong><span>两侧洗手盆</span></div>
+            </div>
+            <ol class="design-principles">
+              <li><i>1</i><span><strong>入口分离</strong><small>SEPARATE ACCESS</small></span></li>
+              <li><i>2</i><span><strong>实体隔墙</strong><small>FULL-HEIGHT DIVIDER</small></span></li>
+              <li><i>3</i><span><strong>低进高排</strong><small>LOW INTAKE / HIGH EXHAUST</small></span></li>
+              <li><i>4</i><span><strong>自然 + 机械通风</strong><small>HYBRID VENTILATION</small></span></li>
+            </ol>
+            <div class="support-summary">
+              <span>有效基础支撑路径</span>
+              <strong id="support-count">—</strong>
+              <small id="support-note">正在校验构件支撑图</small>
+            </div>
+            <p class="audit-note">本模型用于空间与装配逻辑演示；实际建设仍需按项目所在地无障碍、消防、给排水及通风规范深化。</p>
+          </section>
+        </aside>
+      </main>
+
+      <footer class="restroom-timeline">
+        <div class="timeline-title">
+          <span>EXPLODED ASSEMBLY</span>
+          <strong id="assembly-state">完整状态</strong>
+          <small id="assembly-step">STEP 00 / 08</small>
+        </div>
+        <div class="slider-area">
+          <div><span>完整</span><strong id="explosion-value">0%</strong><span>爆炸</span></div>
+          <input id="explosion-slider" type="range" min="0" max="100" value="0" aria-label="爆炸程度" />
+          <div id="stage-track" class="restroom-stages"></div>
+        </div>
+        <div class="restroom-controls">
+          <button id="complete-state">完整状态</button>
+          <button id="auto-assemble">自动装配</button>
+          <button id="pause-resume" class="pause-button" title="暂停或继续">Ⅱ</button>
+          <button id="auto-disassemble">自动拆解</button>
+          <button id="full-explode">全部爆炸</button>
+          <button id="reset-model" class="reset-button">重置</button>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="/src/restroomMain.ts"></script>
+  </body>
+</html>

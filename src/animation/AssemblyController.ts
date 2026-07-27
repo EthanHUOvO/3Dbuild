@@ -22,16 +22,20 @@ export class AssemblyController {
   private readonly stageDuration = 0.72;
   private onState?: (state: AssemblyState) => void;
   private readonly idsByStage: string[][];
+  private readonly stageLabels: string[];
 
   constructor(
     components: TempleComponent[],
     private readonly explosion: ExplosionController,
+    order = DISASSEMBLY_ORDER,
+    stageLabels = STAGE_LABELS,
   ) {
-    this.idsByStage = DISASSEMBLY_ORDER.map((types) =>
+    this.idsByStage = order.map((types) =>
       components
         .filter(({ data }) => types.includes(data.componentType))
         .map(({ data }) => data.componentId),
     );
+    this.stageLabels = stageLabels;
   }
 
   startDisassembly(): void {
@@ -127,7 +131,7 @@ export class AssemblyController {
     this.onState?.({
       mode: this.mode,
       stage: this.stageIndex,
-      stageLabel: STAGE_LABELS[this.stageIndex] ?? "完成",
+      stageLabel: this.stageLabels[this.stageIndex] ?? "完成",
       overall: Math.max(0, Math.min(1, overall)),
     });
   }

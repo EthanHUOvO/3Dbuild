@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="简化八角凉亭构件支撑、分层爆炸与装配交互演示"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Octagonal Pavilion Assembly" />
+    <meta
+      property="og:description"
+      content="83 个程序化构件组成的八角凉亭支撑与爆炸图演示"
+    />
+    <meta property="og:image" content="/pavilion-og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Octagonal Pavilion Assembly" />
+    <meta
+      name="twitter:description"
+      content="83 个程序化构件组成的八角凉亭支撑与爆炸图演示"
+    />
+    <meta name="twitter:image" content="/pavilion-og.png" />
+    <title>Octagonal Pavilion Assembly</title>
+  </head>
+  <body>
+    <div id="pavilion-app" class="pavilion-shell">
+      <header class="pavilion-topbar">
+        <div class="pavilion-brand">
+          <div class="pavilion-mark" aria-hidden="true"><span>亭</span></div>
+          <div>
+            <span>SMALL-SCALE TIMBER ASSEMBLY · 02</span>
+            <h1>Octagonal Pavilion Assembly</h1>
+            <p>八角凉亭构件支撑、爆炸与重组演示</p>
+          </div>
+        </div>
+        <div class="model-tabs" aria-label="模型切换">
+          <a href="/">大殿模型 · 252 构件</a>
+          <a class="active" href="/pavilion.html">凉亭模型 · 83 构件</a>
+        </div>
+        <div class="pavilion-status">
+          <div><strong id="visible-count">83</strong><span>VISIBLE</span></div>
+          <div><strong id="total-count">83</strong><span>COMPONENTS</span></div>
+          <div class="health-indicator"><i></i><span>支撑图有效</span></div>
+        </div>
+      </header>
+
+      <main class="pavilion-workspace">
+        <aside class="pavilion-panel pavilion-left">
+          <section>
+            <div class="panel-heading">
+              <span>01</span>
+              <div><h2>构件类别</h2><small>COMPONENT CLASSES</small></div>
+              <button id="show-all">全部显示</button>
+            </div>
+            <div id="type-filters" class="pavilion-filters"></div>
+          </section>
+
+          <section>
+            <div class="panel-heading">
+              <span>02</span>
+              <div><h2>受力传递</h2><small>SUPPORT CHAIN</small></div>
+            </div>
+            <ol class="support-chain">
+              <li><i></i><div><strong>台基与柱础</strong><span>GROUND / BASE</span></div></li>
+              <li><i></i><div><strong>八根檐柱</strong><span>VERTICAL LOAD</span></div></li>
+              <li><i></i><div><strong>圈梁与对角梁</strong><span>HORIZONTAL TIE</span></div></li>
+              <li><i></i><div><strong>斗拱与雷公柱</strong><span>LOAD TRANSFER</span></div></li>
+              <li><i></i><div><strong>放射椽与屋面</strong><span>ROOF SYSTEM</span></div></li>
+            </ol>
+            <div class="support-summary">
+              <span>有效支撑路径</span>
+              <strong id="support-count">—</strong>
+              <small id="support-note">正在校验语义关系</small>
+            </div>
+          </section>
+
+          <section class="principle-card">
+            <span>结构原则</span>
+            <p>所有上部构件均通过明确的 <code>supportedBy</code> 关系，逐级回溯至八角石台基。</p>
+          </section>
+        </aside>
+
+        <section id="viewport" class="pavilion-viewport" aria-label="八角凉亭三维场景">
+          <canvas id="scene-canvas"></canvas>
+          <div id="loading" class="pavilion-loading">
+            <div class="octagon-loader"></div>
+            <strong>正在生成八角木构支撑图</strong>
+            <span>BUILDING 83 PROCEDURAL COMPONENTS</span>
+          </div>
+          <div class="viewport-caption">
+            <span>MODEL / 02</span>
+            <strong id="view-label">完整结构 · AXONOMETRIC</strong>
+          </div>
+          <div class="view-tools">
+            <button id="reset-camera" title="重置视角">⌂</button>
+            <button id="toggle-grid" title="网格">#</button>
+            <button id="help-button" title="帮助">?</button>
+          </div>
+          <div id="help-panel" class="pavilion-help hidden">
+            <strong>交互操作</strong>
+            <p>左键旋转 · 滚轮缩放 · 右键平移</p>
+            <p>悬停高亮 · 单击选择 · 空白处取消</p>
+            <p>底部滑块可连续查看拆分层次。</p>
+            <button id="close-help">知道了</button>
+          </div>
+          <div class="explosion-axis" aria-hidden="true">
+            <span>垂直分层</span><i></i><em>屋脊 / 屋面 / 椽 / 梁 / 柱 / 基础</em>
+          </div>
+          <div id="toast" class="pavilion-toast" role="status"></div>
+        </section>
+
+        <aside class="pavilion-panel pavilion-right">
+          <section>
+            <div class="panel-heading">
+              <span>03</span>
+              <div><h2>构件档案</h2><small>COMPONENT RECORD</small></div>
+              <em id="selection-state">0 SELECTED</em>
+            </div>
+            <div id="empty-selection" class="pavilion-empty">
+              <div>+</div>
+              <strong>选择一个凉亭构件</strong>
+              <p>查看构件编号、装配层和实际支撑来源。</p>
+            </div>
+            <div id="component-details" class="pavilion-details hidden">
+              <div class="detail-title">
+                <span id="component-type">COLUMN</span>
+                <h3 id="component-name">木柱</h3>
+                <em id="component-status">ACTIVE</em>
+              </div>
+              <dl>
+                <div><dt>稳定编号</dt><dd id="component-id">—</dd></div>
+                <div><dt>装配层</dt><dd id="component-layer">—</dd></div>
+                <div><dt>装配步骤</dt><dd id="component-step">—</dd></div>
+                <div><dt>原始坐标</dt><dd id="component-position">—</dd></div>
+              </dl>
+              <div class="detail-relations">
+                <span>SUPPORTED BY</span>
+                <p id="supported-by">—</p>
+                <span>CONNECTED TO</span>
+                <p id="connected-to">—</p>
+              </div>
+              <div id="selected-support-result" class="selected-support-result">
+                <i></i>
+                <div><small>GROUND PATH</small><strong>PASS</strong></div>
+              </div>
+              <button id="isolate-layer">只查看当前构件层</button>
+            </div>
+          </section>
+
+          <section>
+            <div class="panel-heading">
+              <span>04</span>
+              <div><h2>构件统计</h2><small>ASSEMBLY AUDIT</small></div>
+            </div>
+            <div class="audit-grid">
+              <div><strong>8</strong><span>檐柱</span></div>
+              <div><strong>12</strong><span>梁件</span></div>
+              <div><strong>16</strong><span>放射椽</span></div>
+              <div><strong>8</strong><span>屋面片</span></div>
+            </div>
+            <p class="audit-note">本模型为教学演示用的程序化抽象结构，不对应某座真实文物的精确测绘。</p>
+          </section>
+        </aside>
+      </main>
+
+      <footer class="pavilion-timeline">
+        <div class="timeline-title">
+          <span>EXPLODED ASSEMBLY</span>
+          <strong id="assembly-state">完整状态</strong>
+          <small id="assembly-step">STEP 00 / 08</small>
+        </div>
+        <div class="slider-area">
+          <div><span>完整</span><strong id="explosion-value">0%</strong><span>爆炸</span></div>
+          <input id="explosion-slider" type="range" min="0" max="100" value="0" aria-label="爆炸程度" />
+          <div id="stage-track" class="pavilion-stages"></div>
+        </div>
+        <div class="pavilion-controls">
+          <button id="complete-state">完整状态</button>
+          <button id="auto-assemble">自动装配</button>
+          <button id="pause-resume" class="pause-button" title="暂停或继续">Ⅱ</button>
+          <button id="auto-disassemble">自动拆解</button>
+          <button id="full-explode">全部爆炸</button>
+          <button id="reset-model" class="reset-button">重置</button>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="/src/pavilionMain.ts"></script>
+  </body>
+</html>

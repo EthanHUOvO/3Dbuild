@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import { cloudflare } from "@cloudflare/vite-plugin";
+import { resolve } from "node:path";
 import { sites } from "./build/sites-vite-plugin";
 
 export default defineConfig({
@@ -28,5 +29,17 @@ export default defineConfig({
   build: {
     target: "es2022",
     sourcemap: true,
+  },
+  environments: {
+    client: {
+      build: {
+        rollupOptions: {
+          input: {
+            main: resolve(process.cwd(), "index.html"),
+            pavilion: resolve(process.cwd(), "pavilion.html"),
+          },
+        },
+      },
+    },
   },
 });

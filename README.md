@@ -77,6 +77,25 @@ http://127.0.0.1:4173/restroom.html
 
 八角凉亭页面采用同一套选择、筛选、爆炸和顺序装配交互。左侧“受力传递”面板会校验每个构件的 `supportedBy` 数据能否逐级回溯至台基；单击任意构件后，右侧可查看它的直接支撑来源和连接节点。
 
+凉亭页面还提供一套可下载的 CAD 图纸：
+
+- `pavilion_plan_A101.dxf`：柱网、圈梁、对角梁、栏杆、放射椽和屋面投影平面图；
+- `pavilion_front_elevation_A201.dxf`：正立面图；
+- `pavilion_section_AA_A301.dxf`：穿过对向柱和中央雷公柱的中心剖面；
+- `pavilion_exploded_A401.dxf`：按支撑和装配顺序绘制的爆炸轴测图；
+- `pavilion_drawing_set.dxf`：四张图纸合并在同一模型空间；
+- `pavilion_component_schedule.csv`：91 个语义构件明细表；
+- `pavilion_drawing_set.svg`：浏览器图纸总览；
+- `pavilion_cad_package.zip`：完整下载包。
+
+DXF 采用毫米单位、模型空间 1:1，使用基础 LINE、CIRCLE 和 TEXT 实体以提高 AutoCAD、Rhino、BricsCAD 等软件的兼容性，建议按 A3 / 1:50 出图。重新生成命令：
+
+```bash
+npm run export:cad
+```
+
+导出尺寸直接来源于程序化凉亭参数：柱网半径 4750 mm、屋檐半径 6650 mm、檐檩标高 8500 mm、屋顶顶点标高 10650 mm。图纸是概念结构演示，不是测绘图、结构计算书或施工图。
+
 现代公共厕所页面另外提供：
 
 - 男厕、女厕和共享结构三类分区筛选；
@@ -154,6 +173,8 @@ src/
   restroomMain.ts
   restroom.css
   styles.css
+scripts/
+  exportPavilionCad.mjs
 worker/
   index.ts
 index.html

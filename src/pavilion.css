@@ -443,6 +443,85 @@ a {
   font-size: 7px;
 }
 
+.cad-card {
+  background:
+    linear-gradient(145deg, rgba(47, 136, 119, 0.13), transparent 62%),
+    rgba(8, 20, 18, 0.58);
+}
+
+.cad-card-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cad-card-heading span {
+  color: var(--teal);
+  font-family: Consolas, monospace;
+  font-size: 7px;
+  letter-spacing: 0.13em;
+}
+
+.cad-card-heading em {
+  color: var(--faint);
+  font-family: Consolas, monospace;
+  font-size: 7px;
+  font-style: normal;
+}
+
+.cad-card > strong {
+  display: block;
+  margin-top: 7px;
+  color: var(--text);
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.cad-card > p {
+  margin: 5px 0 9px;
+  color: var(--muted);
+  font-size: 8px;
+  line-height: 1.55;
+}
+
+.cad-actions {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5px;
+}
+
+.cad-actions a {
+  display: grid;
+  min-height: 29px;
+  place-items: center;
+  border: 1px solid rgba(107, 216, 197, 0.23);
+  border-radius: 2px;
+  color: var(--muted);
+  background: rgba(12, 32, 28, 0.68);
+  font-size: 8px;
+  text-decoration: none;
+  transition: 160ms ease;
+}
+
+.cad-actions a:hover {
+  color: var(--text);
+  border-color: rgba(107, 216, 197, 0.48);
+}
+
+.cad-actions a.primary {
+  color: #07110f;
+  border-color: var(--teal);
+  background: var(--teal);
+  font-weight: 600;
+}
+
+.cad-card > small {
+  display: block;
+  margin-top: 7px;
+  color: var(--faint);
+  font-size: 7px;
+}
+
 .pavilion-viewport {
   position: relative;
   min-width: 0;

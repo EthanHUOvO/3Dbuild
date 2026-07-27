@@ -22,10 +22,17 @@ interface ComponentSpec {
 const OCTAGON_SIDES = 8;
 const COLUMN_RADIUS = 4.75;
 const EAVE_RADIUS = 6.65;
-const EAVE_Y = 8.35;
-const APEX_Y = 11.35;
+const EAVE_Y = 7.62;
+const EAVE_PURLIN_Y = 8.5;
+const APEX_Y = 10.65;
 
 export interface PavilionSupportReport {
+  valid: number;
+  total: number;
+  invalidIds: string[];
+}
+
+export interface PavilionBearingReport {
   valid: number;
   total: number;
   invalidIds: string[];
@@ -73,8 +80,9 @@ export class PavilionBuilder {
     const grid = this.buildBasesAndColumns();
     const beams = this.buildBeamFrame(grid.columns);
     const dougong = this.buildDougong(grid.columns, beams.ring);
+    const eavePurlins = this.buildEavePurlins(dougong);
     const kingpost = this.buildKingpost(beams.cross);
-    const rafters = this.buildRafters(dougong, kingpost);
+    const rafters = this.buildRafters(eavePurlins, kingpost);
     const panels = this.buildRoofPanels(rafters);
     const ridges = this.buildRidges(panels);
     this.buildRailings(grid.columns);
@@ -124,6 +132,28 @@ export class PavilionBuilder {
     return {
       valid: model.components.length - invalidIds.length,
       total: model.components.length,
+      invalidIds,
+    };
+  }
+
+  static validateBearingContacts(model: TempleModel): PavilionBearingReport {
+    model.root.updateMatrixWorld(true);
+    const rafters = model.components.filter(({ data }) => data.componentType === ComponentType.RAFTER);
+    const invalidIds = rafters
+      .filter(({ object, data }) => {
+        const rafterBounds = new THREE.Box3().setFromObject(object).expandByScalar(0.025);
+        const bearingPurlins = data.supportedBy
+          .map((id) => model.componentMap.get(id))
+          .filter((component): component is TempleComponent => component?.data.componentType === ComponentType.PURLIN);
+        return !bearingPurlins.some(({ object: purlin }) =>
+          rafterBounds.intersectsBox(new THREE.Box3().setFromObject(purlin).expandByScalar(0.025)),
+        );
+      })
+      .map(({ data }) => data.componentId);
+
+    return {
+      valid: rafters.length - invalidIds.length,
+      total: rafters.length,
       invalidIds,
     };
   }
@@ -288,7 +318,7 @@ export class PavilionBuilder {
       const start = points[index].clone().setY(7.56);
       const end = points[opposite].clone().setY(7.56);
       const id = `PAV-CROSS-${String(index + 1).padStart(2, "0")}`;
-      const beam = this.boxBetween(start, end, 0.32, 0.34, index % 2 === 0 ? this.materials.wood : this.materials.woodLight);
+      const beam = this.boxBetween(start, end, 0.32, 0.34, this.materials.wood);
       this.addComponent(beam, {
         id,
         nameZh: `第${index + 1}根对角承托梁`,
@@ -335,15 +365,38 @@ export class PavilionBuilder {
     });
   }
 
+  private buildEavePurlins(dougong: string[]): string[] {
+    const points = this.octagonPoints(COLUMN_RADIUS, EAVE_PURLIN_Y);
+    const purlins: string[] = [];
+    for (let index = 0; index < OCTAGON_SIDES; index += 1) {
+      const next = (index + 1) % OCTAGON_SIDES;
+      const id = `PAV-PURLIN-${String(index + 1).padStart(2, "0")}`;
+      const purlin = this.boxBetween(points[index], points[next], 0.24, 0.3, this.materials.wood);
+      this.addComponent(purlin, {
+        id,
+        nameZh: `第${index + 1}段八角檐檩`,
+        nameEn: `Octagonal eave purlin ${index + 1}`,
+        type: ComponentType.PURLIN,
+        layer: 5,
+        step: 6,
+        parentIds: [dougong[index], dougong[next]],
+        supportedBy: [dougong[index], dougong[next]],
+        connectedTo: [dougong[index], dougong[next]],
+      });
+      purlins.push(id);
+    }
+    return purlins;
+  }
+
   private buildKingpost(crossBeams: string[]): string {
     const group = new THREE.Group();
-    const post = new THREE.Mesh(new THREE.CylinderGeometry(0.27, 0.36, 3.22, 12), this.materials.red);
+    const post = new THREE.Mesh(new THREE.CylinderGeometry(0.27, 0.36, 2.55, 12), this.materials.red);
     const lowerBlock = new THREE.Mesh(new THREE.BoxGeometry(0.82, 0.3, 0.82), this.materials.gold);
-    lowerBlock.position.y = -1.63;
+    lowerBlock.position.y = -1.28;
     const topBlock = new THREE.Mesh(new THREE.BoxGeometry(0.72, 0.28, 0.72), this.materials.teal);
-    topBlock.position.y = 1.62;
+    topBlock.position.y = 1.28;
     group.add(post, lowerBlock, topBlock);
-    group.position.set(0, 9.18, 0);
+    group.position.set(0, 8.96, 0);
     this.addComponent(group, {
       id: "PAV-KINGPOST-01",
       nameZh: "中央雷公柱",
@@ -358,7 +411,7 @@ export class PavilionBuilder {
     return "PAV-KINGPOST-01";
   }
 
-  private buildRafters(dougong: string[], kingpost: string): string[] {
+  private buildRafters(eavePurlins: string[], kingpost: string): string[] {
     const rafters: string[] = [];
     for (let index = 0; index < 16; index += 1) {
       const angle = (Math.PI * 2 * index) / 16 + Math.PI / 8;
@@ -366,7 +419,7 @@ export class PavilionBuilder {
       const outerRadius = isMain ? EAVE_RADIUS + 0.24 : EAVE_RADIUS;
       const start = new THREE.Vector3(
         Math.cos(angle) * outerRadius,
-        EAVE_Y + (isMain ? 0.17 : 0),
+        EAVE_Y + (isMain ? 0.08 : 0),
         Math.sin(angle) * outerRadius,
       );
       const end = new THREE.Vector3(0, APEX_Y - 0.18, 0);
@@ -379,7 +432,9 @@ export class PavilionBuilder {
         8,
       );
       const bracketIndex = Math.floor(index / 2) % 8;
-      const adjacentBracket = (bracketIndex + 1) % 8;
+      const bearingPurlins = isMain
+        ? [eavePurlins[(bracketIndex + 7) % 8], eavePurlins[bracketIndex]]
+        : [eavePurlins[bracketIndex]];
       this.addComponent(rafter, {
         id,
         nameZh: isMain ? `第${bracketIndex + 1}根角梁` : `第${bracketIndex + 1}根放射椽`,
@@ -387,11 +442,9 @@ export class PavilionBuilder {
         type: ComponentType.RAFTER,
         layer: 6,
         step: 7,
-        parentIds: [dougong[bracketIndex], kingpost],
-        supportedBy: isMain
-          ? [dougong[bracketIndex], kingpost]
-          : [dougong[bracketIndex], dougong[adjacentBracket], kingpost],
-        connectedTo: [dougong[bracketIndex], kingpost],
+        parentIds: [...bearingPurlins, kingpost],
+        supportedBy: [...bearingPurlins, kingpost],
+        connectedTo: [...bearingPurlins, kingpost],
       });
       rafters.push(id);
     }
@@ -494,7 +547,7 @@ export class PavilionBuilder {
 
   private buildFinial(ridges: string[]): void {
     const base = new THREE.Mesh(new THREE.CylinderGeometry(0.48, 0.62, 0.38, 12), this.materials.gold);
-    base.position.set(0, 11.58, 0);
+    base.position.set(0, APEX_Y + 0.23, 0);
     this.addComponent(base, {
       id: "PAV-FINIAL-01",
       nameZh: "宝顶承座",
@@ -507,7 +560,7 @@ export class PavilionBuilder {
     });
 
     const stem = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.26, 1.05, 12), this.materials.gold);
-    stem.position.set(0, 12.29, 0);
+    stem.position.set(0, APEX_Y + 0.94, 0);
     this.addComponent(stem, {
       id: "PAV-FINIAL-02",
       nameZh: "宝顶刹杆",
@@ -521,7 +574,7 @@ export class PavilionBuilder {
     });
 
     const pearl = new THREE.Mesh(new THREE.SphereGeometry(0.42, 18, 14), this.materials.gold);
-    pearl.position.set(0, 13.02, 0);
+    pearl.position.set(0, APEX_Y + 1.67, 0);
     this.addComponent(pearl, {
       id: "PAV-FINIAL-03",
       nameZh: "宝顶宝珠",

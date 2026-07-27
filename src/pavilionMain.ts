@@ -4,7 +4,11 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { ExplosionController } from "./animation/ExplosionController";
 import { AssemblyController, type AssemblyState } from "./animation/AssemblyController";
 import { SelectionManager } from "./interaction/SelectionManager";
-import { PavilionBuilder, type PavilionSupportReport } from "./pavilion/PavilionBuilder";
+import {
+  PavilionBuilder,
+  type PavilionBearingReport,
+  type PavilionSupportReport,
+} from "./pavilion/PavilionBuilder";
 import {
   ComponentStatus,
   ComponentType,
@@ -121,6 +125,7 @@ scene.add(halo);
 const pavilion = new PavilionBuilder().build();
 scene.add(pavilion.root);
 const supportReport = PavilionBuilder.validateSupportPaths(pavilion);
+const bearingReport = PavilionBuilder.validateBearingContacts(pavilion);
 
 const explosion = new ExplosionController(pavilion.components);
 const assembly = new AssemblyController(pavilion.components, explosion);
@@ -150,6 +155,7 @@ function createFilters(): void {
     ComponentType.COLUMN,
     ComponentType.BEAM,
     ComponentType.DOUGONG,
+    ComponentType.PURLIN,
     ComponentType.RAFTER,
     ComponentType.ROOF_PANEL,
     ComponentType.RIDGE,
@@ -338,7 +344,7 @@ function resetModel(): void {
   document.documentElement.dataset.positionDriftFree = String(driftFree);
   setCameraPreset("structure", true);
   showToast(
-    driftFree ? "凉亭已复原；83 个构件原始坐标校验通过" : "模型已复原，但发现构件坐标异常",
+    driftFree ? `凉亭已复原；${pavilion.components.length} 个构件原始坐标校验通过` : "模型已复原，但发现构件坐标异常",
     driftFree ? "success" : "warning",
   );
 }
@@ -362,7 +368,7 @@ element<HTMLButtonElement>("full-explode").addEventListener("click", () => {
   assembly.stop();
   explosion.animateTo(1, 1.25);
   setCameraPreset("exploded");
-  showToast("正在展开 83 个构件的分层爆炸视图");
+  showToast(`正在展开 ${pavilion.components.length} 个构件的分层爆炸视图`);
 });
 
 element<HTMLButtonElement>("auto-disassemble").addEventListener("click", () => {
@@ -423,9 +429,9 @@ createStageTrack();
 updateCounts();
 supportCount.textContent = `${supportReport.valid} / ${supportReport.total}`;
 supportNote.textContent =
-  supportReport.invalidIds.length === 0
-    ? "全部构件均可回溯至地基节点"
-    : `发现 ${supportReport.invalidIds.length} 个无效节点`;
+  supportReport.invalidIds.length === 0 && bearingReport.invalidIds.length === 0
+    ? `全部构件可回溯至地基；${bearingReport.valid}/${bearingReport.total} 根椽与檐檩接触`
+    : `发现 ${supportReport.invalidIds.length} 个支撑异常、${bearingReport.invalidIds.length} 个接触异常`;
 
 function resize(): void {
   const width = Math.max(1, viewport.clientWidth);
@@ -464,6 +470,7 @@ window.addEventListener("error", (event) => {
 interface PavilionTestApi {
   componentCount: number;
   getSupportReport(): PavilionSupportReport;
+  getBearingReport(): PavilionBearingReport;
   setExplosion(value: number): void;
   getExplosion(): number;
   autoDisassemble(): void;
@@ -482,6 +489,7 @@ declare global {
 window.__pavilionDemo = {
   componentCount: pavilion.components.length,
   getSupportReport: () => ({ ...supportReport, invalidIds: [...supportReport.invalidIds] }),
+  getBearingReport: () => ({ ...bearingReport, invalidIds: [...bearingReport.invalidIds] }),
   setExplosion: (value) => {
     assembly.stop();
     explosion.setProgress(value);
@@ -496,5 +504,6 @@ window.__pavilionDemo = {
 
 document.documentElement.dataset.modelComponentCount = String(pavilion.components.length);
 document.documentElement.dataset.supportPathsValid = String(supportReport.invalidIds.length === 0);
+document.documentElement.dataset.bearingContactsValid = String(bearingReport.invalidIds.length === 0);
 document.documentElement.dataset.positionDriftFree = String(explosion.verifyNoDrift());
 document.documentElement.dataset.runtimeReady = "true";

@@ -96,6 +96,27 @@ npm run export:cad
 
 导出尺寸直接来源于程序化凉亭参数：柱网半径 4750 mm、屋檐半径 6650 mm、檐檩标高 8500 mm、屋顶顶点标高 10650 mm。图纸是概念结构演示，不是测绘图、结构计算书或施工图。
 
+### STL 网格导出
+
+凉亭页面同时提供毫米制 STL 下载包：
+
+- `pavilion_complete_assembled_mm.stl`：完整装配状态；
+- `pavilion_complete_exploded_mm.stl`：完整爆炸状态；
+- `systems/*.stl`：基础、柱础、柱、梁、斗拱、檐檩、椽、屋面、屋脊和栏杆 10 个系统分组；
+- `components/*.stl`：91 个独立构件；
+- `pavilion_stl_manifest.json`：构件编号、类型、装配/爆炸坐标、三角面数量和包围尺寸；
+- `pavilion_stl_package_mm.zip`：完整 STL 下载包。
+
+STL 文件为二进制格式，共 103 个网格文件。完整装配模型包含 4076 个三角面，包围尺寸约为 13385 × 13385 × 12990 mm。由于 STL 不保存单位，导入 Rhino、AutoCAD、Blender 或切片软件时必须选择毫米。程序化屋面原本为单层三角面，STL 导出时会自动加厚为 90 mm 的闭合三角棱柱。
+
+重新生成命令：
+
+```bash
+npm run export:stl
+```
+
+导出脚本直接加载现有 `PavilionBuilder`，因此 STL 与浏览器中的凉亭构件编号、位置和尺寸保持一致。
+
 现代公共厕所页面另外提供：
 
 - 男厕、女厕和共享结构三类分区筛选；
@@ -175,6 +196,7 @@ src/
   styles.css
 scripts/
   exportPavilionCad.mjs
+  exportPavilionStl.mjs
 worker/
   index.ts
 index.html

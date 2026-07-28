@@ -522,6 +522,22 @@ a {
   font-size: 7px;
 }
 
+.stl-card {
+  background:
+    linear-gradient(145deg, rgba(213, 170, 83, 0.12), transparent 62%),
+    rgba(8, 20, 18, 0.58);
+}
+
+.stl-card .cad-card-heading span {
+  color: var(--gold);
+}
+
+.stl-card .cad-actions a.primary {
+  color: #151007;
+  border-color: var(--gold);
+  background: var(--gold);
+}
+
 .pavilion-viewport {
   position: relative;
   min-width: 0;

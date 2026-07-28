@@ -1,0 +1,3610 @@
+{
+  "format": "Binary STL",
+  "units": "millimetres",
+  "modelSpaceScale": "1:1",
+  "sourceModel": "Abstract Octagonal Timber Pavilion",
+  "componentCount": 91,
+  "roofPanelSolidificationMm": 90,
+  "assembled": {
+    "triangles": 4076,
+    "bytes": 203884,
+    "boundsMm": {
+      "min": {
+        "x": -6692.543,
+        "y": -250,
+        "z": -6692.543
+      },
+      "max": {
+        "x": 6692.543,
+        "y": 12740,
+        "z": 6692.543
+      },
+      "size": {
+        "x": 13385.087,
+        "y": 12990,
+        "z": 13385.087
+      }
+    }
+  },
+  "exploded": {
+    "triangles": 4076,
+    "bytes": 203884,
+    "boundsMm": {
+      "min": {
+        "x": -16809.854,
+        "y": -430,
+        "z": -16809.854
+      },
+      "max": {
+        "x": 16809.854,
+        "y": 28040,
+        "z": 16809.854
+      },
+      "size": {
+        "x": 33619.707,
+        "y": 28470,
+        "z": 33619.707
+      }
+    }
+  },
+  "systems": [
+    {
+      "file": "01_foundation.stl",
+      "types": [
+        "FOUNDATION"
+      ],
+      "label": "Stone foundation",
+      "path": "systems/01_foundation.stl",
+      "componentCount": 3,
+      "triangles": 96,
+      "bytes": 4884,
+      "boundsMm": {
+        "min": {
+          "x": -6580,
+          "y": -250,
+          "z": -6580
+        },
+        "max": {
+          "x": 6580,
+          "y": 980,
+          "z": 6580
+        },
+        "size": {
+          "x": 13160,
+          "y": 1230,
+          "z": 13160
+        }
+      }
+    },
+    {
+      "file": "02_column_bases.stl",
+      "types": [
+        "COLUMN_BASE"
+      ],
+      "label": "Column bases",
+      "path": "systems/02_column_bases.stl",
+      "componentCount": 8,
+      "triangles": 768,
+      "bytes": 38484,
+      "boundsMm": {
+        "min": {
+          "x": -5058.428,
+          "y": 990,
+          "z": -5058.428
+        },
+        "max": {
+          "x": 5058.428,
+          "y": 1450,
+          "z": 5058.428
+        },
+        "size": {
+          "x": 10116.855,
+          "y": 460,
+          "z": 10116.855
+        }
+      }
+    },
+    {
+      "file": "03_columns.stl",
+      "types": [
+        "COLUMN"
+      ],
+      "label": "Perimeter columns and kingpost",
+      "path": "systems/03_columns.stl",
+      "componentCount": 9,
+      "triangles": 520,
+      "bytes": 26084,
+      "boundsMm": {
+        "min": {
+          "x": -4758.9,
+          "y": 1360,
+          "z": -4768.428
+        },
+        "max": {
+          "x": 4758.9,
+          "y": 10380,
+          "z": 4768.428
+        },
+        "size": {
+          "x": 9517.801,
+          "y": 9020,
+          "z": 9536.855
+        }
+      }
+    },
+    {
+      "file": "04_beam_frame.stl",
+      "types": [
+        "BEAM"
+      ],
+      "label": "Ring and cross beams",
+      "path": "systems/04_beam_frame.stl",
+      "componentCount": 12,
+      "triangles": 144,
+      "bytes": 7284,
+      "boundsMm": {
+        "min": {
+          "x": -4628.428,
+          "y": 6970,
+          "z": -4628.428
+        },
+        "max": {
+          "x": 4628.428,
+          "y": 7720,
+          "z": 4628.428
+        },
+        "size": {
+          "x": 9256.855,
+          "y": 750,
+          "z": 9256.855
+        }
+      }
+    },
+    {
+      "file": "05_dougong.stl",
+      "types": [
+        "DOUGONG"
+      ],
+      "label": "Dougong bracket sets",
+      "path": "systems/05_dougong.stl",
+      "componentCount": 8,
+      "triangles": 384,
+      "bytes": 19284,
+      "boundsMm": {
+        "min": {
+          "x": -5128.428,
+          "y": 7335,
+          "z": -5128.428
+        },
+        "max": {
+          "x": 5128.428,
+          "y": 8430,
+          "z": 5128.428
+        },
+        "size": {
+          "x": 10256.855,
+          "y": 1095,
+          "z": 10256.855
+        }
+      }
+    },
+    {
+      "file": "06_eave_purlins.stl",
+      "types": [
+        "PURLIN"
+      ],
+      "label": "Octagonal eave purlins",
+      "path": "systems/06_eave_purlins.stl",
+      "componentCount": 8,
+      "triangles": 96,
+      "bytes": 4884,
+      "boundsMm": {
+        "min": {
+          "x": -4538.428,
+          "y": 8380,
+          "z": -4538.428
+        },
+        "max": {
+          "x": 4538.428,
+          "y": 8620,
+          "z": 4538.428
+        },
+        "size": {
+          "x": 9076.855,
+          "y": 240,
+          "z": 9076.855
+        }
+      }
+    },
+    {
+      "file": "07_radial_rafters.stl",
+      "types": [
+        "RAFTER"
+      ],
+      "label": "Radial rafters",
+      "path": "systems/07_radial_rafters.stl",
+      "componentCount": 16,
+      "triangles": 512,
+      "bytes": 25684,
+      "boundsMm": {
+        "min": {
+          "x": -6692.543,
+          "y": 7520.732,
+          "z": -6692.543
+        },
+        "max": {
+          "x": 6692.543,
+          "y": 10590.008,
+          "z": 6692.543
+        },
+        "size": {
+          "x": 13385.087,
+          "y": 3069.275,
+          "z": 13385.087
+        }
+      }
+    },
+    {
+      "file": "08_roof_panels.stl",
+      "types": [
+        "ROOF_PANEL"
+      ],
+      "label": "Solidified roof panels",
+      "path": "systems/08_roof_panels.stl",
+      "componentCount": 8,
+      "triangles": 64,
+      "bytes": 3284,
+      "boundsMm": {
+        "min": {
+          "x": -6347.428,
+          "y": 7689.14,
+          "z": -6347.428
+        },
+        "max": {
+          "x": 6347.428,
+          "y": 10690.86,
+          "z": 6347.428
+        },
+        "size": {
+          "x": 12694.855,
+          "y": 3001.721,
+          "z": 12694.855
+        }
+      }
+    },
+    {
+      "file": "09_ridges_and_finial.stl",
+      "types": [
+        "RIDGE"
+      ],
+      "label": "Hip ridges and finial",
+      "path": "systems/09_ridges_and_finial.stl",
+      "componentCount": 11,
+      "triangles": 820,
+      "bytes": 41084,
+      "boundsMm": {
+        "min": {
+          "x": -6462.403,
+          "y": 7743.626,
+          "z": -6462.403
+        },
+        "max": {
+          "x": 6462.403,
+          "y": 12740,
+          "z": 6462.403
+        },
+        "size": {
+          "x": 12924.806,
+          "y": 4996.374,
+          "z": 12924.806
+        }
+      }
+    },
+    {
+      "file": "10_railings.stl",
+      "types": [
+        "ENCLOSURE"
+      ],
+      "label": "Perimeter railings",
+      "path": "systems/10_railings.stl",
+      "componentCount": 8,
+      "triangles": 672,
+      "bytes": 33684,
+      "boundsMm": {
+        "min": {
+          "x": -4468.428,
+          "y": 1705,
+          "z": -4468.428
+        },
+        "max": {
+          "x": 4468.428,
+          "y": 2720,
+          "z": 4468.428
+        },
+        "size": {
+          "x": 8936.855,
+          "y": 1015,
+          "z": 8936.855
+        }
+      }
+    }
+  ],
+  "components": [
+    {
+      "componentId": "PAV-FND-01",
+      "componentNameZh": "八角下层台基",
+      "componentNameEn": "Lower octagonal terrace",
+      "componentType": "FOUNDATION",
+      "path": "components/PAV-FND-01.stl",
+      "originalPositionMm": [
+        0,
+        50,
+        0
+      ],
+      "explodedPositionMm": [
+        -161.056,
+        -130,
+        1239.581
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -6580,
+          "y": -250,
+          "z": -6580
+        },
+        "max": {
+          "x": 6580,
+          "y": 350,
+          "z": 6580
+        },
+        "size": {
+          "x": 13160,
+          "y": 600,
+          "z": 13160
+        }
+      }
+    },
+    {
+      "componentId": "PAV-FND-02",
+      "componentNameZh": "八角束腰层",
+      "componentNameEn": "Recessed stone course",
+      "componentType": "FOUNDATION",
+      "path": "components/PAV-FND-02.stl",
+      "originalPositionMm": [
+        0,
+        520,
+        0
+      ],
+      "explodedPositionMm": [
+        -2416.995,
+        160,
+        -638.853
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -5950,
+          "y": 330,
+          "z": -5950
+        },
+        "max": {
+          "x": 5950,
+          "y": 710,
+          "z": 5950
+        },
+        "size": {
+          "x": 11900,
+          "y": 380,
+          "z": 11900
+        }
+      }
+    },
+    {
+      "componentId": "PAV-FND-03",
+      "componentNameZh": "八角台明",
+      "componentNameEn": "Upper octagonal platform",
+      "componentType": "FOUNDATION",
+      "path": "components/PAV-FND-03.stl",
+      "originalPositionMm": [
+        0,
+        840,
+        0
+      ],
+      "explodedPositionMm": [
+        1417.417,
+        300,
+        -3471.805
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -5620,
+          "y": 700,
+          "z": -5620
+        },
+        "max": {
+          "x": 5620,
+          "y": 980,
+          "z": 5620
+        },
+        "size": {
+          "x": 11240,
+          "y": 280,
+          "z": 11240
+        }
+      }
+    },
+    {
+      "componentId": "PAV-BASE-01",
+      "componentNameZh": "第1柱础",
+      "componentNameEn": "Column base 1",
+      "componentType": "COLUMN_BASE",
+      "path": "components/PAV-BASE-01.stl",
+      "originalPositionMm": [
+        4388.428,
+        1160,
+        1817.746
+      ],
+      "explodedPositionMm": [
+        6882.903,
+        460,
+        2850.992
+      ],
+      "triangles": 96,
+      "bytes": 4884,
+      "boundsMm": {
+        "min": {
+          "x": 3718.428,
+          "y": 990,
+          "z": 1147.746
+        },
+        "max": {
+          "x": 5058.428,
+          "y": 1450,
+          "z": 2487.746
+        },
+        "size": {
+          "x": 1340,
+          "y": 460,
+          "z": 1340
+        }
+      }
+    },
+    {
+      "componentId": "PAV-COL-01",
+      "componentNameZh": "第1檐柱",
+      "componentNameEn": "Perimeter timber column 1",
+      "componentType": "COLUMN",
+      "path": "components/PAV-COL-01.stl",
+      "originalPositionMm": [
+        4388.428,
+        4220,
+        1817.746
+      ],
+      "explodedPositionMm": [
+        8176.334,
+        4820,
+        3386.748
+      ],
+      "triangles": 56,
+      "bytes": 2884,
+      "boundsMm": {
+        "min": {
+          "x": 4017.955,
+          "y": 1360,
+          "z": 1437.746
+        },
+        "max": {
+          "x": 4758.9,
+          "y": 7080,
+          "z": 2197.746
+        },
+        "size": {
+          "x": 740.945,
+          "y": 5720,
+          "z": 760
+        }
+      }
+    },
+    {
+      "componentId": "PAV-BASE-02",
+      "componentNameZh": "第2柱础",
+      "componentNameEn": "Column base 2",
+      "componentType": "COLUMN_BASE",
+      "path": "components/PAV-BASE-02.stl",
+      "originalPositionMm": [
+        1817.746,
+        1160,
+        4388.428
+      ],
+      "explodedPositionMm": [
+        2850.992,
+        460,
+        6882.903
+      ],
+      "triangles": 96,
+      "bytes": 4884,
+      "boundsMm": {
+        "min": {
+          "x": 1147.746,
+          "y": 990,
+          "z": 3718.428
+        },
+        "max": {
+          "x": 2487.746,
+          "y": 1450,
+          "z": 5058.428
+        },
+        "size": {
+          "x": 1340,
+          "y": 460,
+          "z": 1340
+        }
+      }
+    },
+    {
+      "componentId": "PAV-COL-02",
+      "componentNameZh": "第2檐柱",
+      "componentNameEn": "Perimeter timber column 2",
+      "componentType": "COLUMN",
+      "path": "components/PAV-COL-02.stl",
+      "originalPositionMm": [
+        1817.746,
+        4220,
+        4388.428
+      ],
+      "explodedPositionMm": [
+        3386.748,
+        4820,
+        8176.334
+      ],
+      "triangles": 56,
+      "bytes": 2884,
+      "boundsMm": {
+        "min": {
+          "x": 1447.274,
+          "y": 1360,
+          "z": 4008.428
+        },
+        "max": {
+          "x": 2188.219,
+          "y": 7080,
+          "z": 4768.428
+        },
+        "size": {
+          "x": 740.945,
+          "y": 5720,
+          "z": 760
+        }
+      }
+    },
+    {
+      "componentId": "PAV-BASE-03",
+      "componentNameZh": "第3柱础",
+      "componentNameEn": "Column base 3",
+      "componentType": "COLUMN_BASE",
+      "path": "components/PAV-BASE-03.stl",
+      "originalPositionMm": [
+        -1817.746,
+        1160,
+        4388.428
+      ],
+      "explodedPositionMm": [
+        -2850.992,
+        460,
+        6882.903
+      ],
+      "triangles": 96,
+      "bytes": 4884,
+      "boundsMm": {
+        "min": {
+          "x": -2487.746,
+          "y": 990,
+          "z": 3718.428
+        },
+        "max": {
+          "x": -1147.746,
+          "y": 1450,
+          "z": 5058.428
+        },
+        "size": {
+          "x": 1340,
+          "y": 460,
+          "z": 1340
+        }
+      }
+    },
+    {
+      "componentId": "PAV-COL-03",
+      "componentNameZh": "第3檐柱",
+      "componentNameEn": "Perimeter timber column 3",
+      "componentType": "COLUMN",
+      "path": "components/PAV-COL-03.stl",
+      "originalPositionMm": [
+        -1817.746,
+        4220,
+        4388.428
+      ],
+      "explodedPositionMm": [
+        -3386.748,
+        4820,
+        8176.334
+      ],
+      "triangles": 56,
+      "bytes": 2884,
+      "boundsMm": {
+        "min": {
+          "x": -2188.219,
+          "y": 1360,
+          "z": 4008.428
+        },
+        "max": {
+          "x": -1447.274,
+          "y": 7080,
+          "z": 4768.428
+        },
+        "size": {
+          "x": 740.945,
+          "y": 5720,
+          "z": 760
+        }
+      }
+    },
+    {
+      "componentId": "PAV-BASE-04",
+      "componentNameZh": "第4柱础",
+      "componentNameEn": "Column base 4",
+      "componentType": "COLUMN_BASE",
+      "path": "components/PAV-BASE-04.stl",
+      "originalPositionMm": [
+        -4388.428,
+        1160,
+        1817.746
+      ],
+      "explodedPositionMm": [
+        -6882.903,
+        460,
+        2850.992
+      ],
+      "triangles": 96,
+      "bytes": 4884,
+      "boundsMm": {
+        "min": {
+          "x": -5058.428,
+          "y": 990,
+          "z": 1147.746
+        },
+        "max": {
+          "x": -3718.428,
+          "y": 1450,
+          "z": 2487.746
+        },
+        "size": {
+          "x": 1340,
+          "y": 460,
+          "z": 1340
+        }
+      }
+    },
+    {
+      "componentId": "PAV-COL-04",
+      "componentNameZh": "第4檐柱",
+      "componentNameEn": "Perimeter timber column 4",
+      "componentType": "COLUMN",
+      "path": "components/PAV-COL-04.stl",
+      "originalPositionMm": [
+        -4388.428,
+        4220,
+        1817.746
+      ],
+      "explodedPositionMm": [
+        -8176.334,
+        4820,
+        3386.748
+      ],
+      "triangles": 56,
+      "bytes": 2884,
+      "boundsMm": {
+        "min": {
+          "x": -4758.9,
+          "y": 1360,
+          "z": 1437.746
+        },
+        "max": {
+          "x": -4017.955,
+          "y": 7080,
+          "z": 2197.746
+        },
+        "size": {
+          "x": 740.945,
+          "y": 5720,
+          "z": 760
+        }
+      }
+    },
+    {
+      "componentId": "PAV-BASE-05",
+      "componentNameZh": "第5柱础",
+      "componentNameEn": "Column base 5",
+      "componentType": "COLUMN_BASE",
+      "path": "components/PAV-BASE-05.stl",
+      "originalPositionMm": [
+        -4388.428,
+        1160,
+        -1817.746
+      ],
+      "explodedPositionMm": [
+        -6882.903,
+        460,
+        -2850.992
+      ],
+      "triangles": 96,
+      "bytes": 4884,
+      "boundsMm": {
+        "min": {
+          "x": -5058.428,
+          "y": 990,
+          "z": -2487.746
+        },
+        "max": {
+          "x": -3718.428,
+          "y": 1450,
+          "z": -1147.746
+        },
+        "size": {
+          "x": 1340,
+          "y": 460,
+          "z": 1340
+        }
+      }
+    },
+    {
+      "componentId": "PAV-COL-05",
+      "componentNameZh": "第5檐柱",
+      "componentNameEn": "Perimeter timber column 5",
+      "componentType": "COLUMN",
+      "path": "components/PAV-COL-05.stl",
+      "originalPositionMm": [
+        -4388.428,
+        4220,
+        -1817.746
+      ],
+      "explodedPositionMm": [
+        -8176.334,
+        4820,
+        -3386.748
+      ],
+      "triangles": 56,
+      "bytes": 2884,
+      "boundsMm": {
+        "min": {
+          "x": -4758.9,
+          "y": 1360,
+          "z": -2197.746
+        },
+        "max": {
+          "x": -4017.955,
+          "y": 7080,
+          "z": -1437.746
+        },
+        "size": {
+          "x": 740.945,
+          "y": 5720,
+          "z": 760
+        }
+      }
+    },
+    {
+      "componentId": "PAV-BASE-06",
+      "componentNameZh": "第6柱础",
+      "componentNameEn": "Column base 6",
+      "componentType": "COLUMN_BASE",
+      "path": "components/PAV-BASE-06.stl",
+      "originalPositionMm": [
+        -1817.746,
+        1160,
+        -4388.428
+      ],
+      "explodedPositionMm": [
+        -2850.992,
+        460,
+        -6882.903
+      ],
+      "triangles": 96,
+      "bytes": 4884,
+      "boundsMm": {
+        "min": {
+          "x": -2487.746,
+          "y": 990,
+          "z": -5058.428
+        },
+        "max": {
+          "x": -1147.746,
+          "y": 1450,
+          "z": -3718.428
+        },
+        "size": {
+          "x": 1340,
+          "y": 460,
+          "z": 1340
+        }
+      }
+    },
+    {
+      "componentId": "PAV-COL-06",
+      "componentNameZh": "第6檐柱",
+      "componentNameEn": "Perimeter timber column 6",
+      "componentType": "COLUMN",
+      "path": "components/PAV-COL-06.stl",
+      "originalPositionMm": [
+        -1817.746,
+        4220,
+        -4388.428
+      ],
+      "explodedPositionMm": [
+        -3386.748,
+        4820,
+        -8176.334
+      ],
+      "triangles": 56,
+      "bytes": 2884,
+      "boundsMm": {
+        "min": {
+          "x": -2188.219,
+          "y": 1360,
+          "z": -4768.428
+        },
+        "max": {
+          "x": -1447.274,
+          "y": 7080,
+          "z": -4008.428
+        },
+        "size": {
+          "x": 740.945,
+          "y": 5720,
+          "z": 760
+        }
+      }
+    },
+    {
+      "componentId": "PAV-BASE-07",
+      "componentNameZh": "第7柱础",
+      "componentNameEn": "Column base 7",
+      "componentType": "COLUMN_BASE",
+      "path": "components/PAV-BASE-07.stl",
+      "originalPositionMm": [
+        1817.746,
+        1160,
+        -4388.428
+      ],
+      "explodedPositionMm": [
+        2850.992,
+        460,
+        -6882.903
+      ],
+      "triangles": 96,
+      "bytes": 4884,
+      "boundsMm": {
+        "min": {
+          "x": 1147.746,
+          "y": 990,
+          "z": -5058.428
+        },
+        "max": {
+          "x": 2487.746,
+          "y": 1450,
+          "z": -3718.428
+        },
+        "size": {
+          "x": 1340,
+          "y": 460,
+          "z": 1340
+        }
+      }
+    },
+    {
+      "componentId": "PAV-COL-07",
+      "componentNameZh": "第7檐柱",
+      "componentNameEn": "Perimeter timber column 7",
+      "componentType": "COLUMN",
+      "path": "components/PAV-COL-07.stl",
+      "originalPositionMm": [
+        1817.746,
+        4220,
+        -4388.428
+      ],
+      "explodedPositionMm": [
+        3386.748,
+        4820,
+        -8176.334
+      ],
+      "triangles": 56,
+      "bytes": 2884,
+      "boundsMm": {
+        "min": {
+          "x": 1447.274,
+          "y": 1360,
+          "z": -4768.428
+        },
+        "max": {
+          "x": 2188.219,
+          "y": 7080,
+          "z": -4008.428
+        },
+        "size": {
+          "x": 740.945,
+          "y": 5720,
+          "z": 760
+        }
+      }
+    },
+    {
+      "componentId": "PAV-BASE-08",
+      "componentNameZh": "第8柱础",
+      "componentNameEn": "Column base 8",
+      "componentType": "COLUMN_BASE",
+      "path": "components/PAV-BASE-08.stl",
+      "originalPositionMm": [
+        4388.428,
+        1160,
+        -1817.746
+      ],
+      "explodedPositionMm": [
+        6882.903,
+        460,
+        -2850.992
+      ],
+      "triangles": 96,
+      "bytes": 4884,
+      "boundsMm": {
+        "min": {
+          "x": 3718.428,
+          "y": 990,
+          "z": -2487.746
+        },
+        "max": {
+          "x": 5058.428,
+          "y": 1450,
+          "z": -1147.746
+        },
+        "size": {
+          "x": 1340,
+          "y": 460,
+          "z": 1340
+        }
+      }
+    },
+    {
+      "componentId": "PAV-COL-08",
+      "componentNameZh": "第8檐柱",
+      "componentNameEn": "Perimeter timber column 8",
+      "componentType": "COLUMN",
+      "path": "components/PAV-COL-08.stl",
+      "originalPositionMm": [
+        4388.428,
+        4220,
+        -1817.746
+      ],
+      "explodedPositionMm": [
+        8176.334,
+        4820,
+        -3386.748
+      ],
+      "triangles": 56,
+      "bytes": 2884,
+      "boundsMm": {
+        "min": {
+          "x": 4017.955,
+          "y": 1360,
+          "z": -2197.746
+        },
+        "max": {
+          "x": 4758.9,
+          "y": 7080,
+          "z": -1437.746
+        },
+        "size": {
+          "x": 740.945,
+          "y": 5720,
+          "z": 760
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RING-01",
+      "componentNameZh": "第1段八角圈梁",
+      "componentNameEn": "Octagonal ring beam 1",
+      "componentType": "BEAM",
+      "path": "components/PAV-RING-01.stl",
+      "originalPositionMm": [
+        3103.087,
+        7180,
+        3103.087
+      ],
+      "explodedPositionMm": [
+        6709.332,
+        9680,
+        6709.332
+      ],
+      "triangles": 12,
+      "bytes": 684,
+      "boundsMm": {
+        "min": {
+          "x": 1648.041,
+          "y": 6970,
+          "z": 1648.041
+        },
+        "max": {
+          "x": 4558.133,
+          "y": 7390,
+          "z": 4558.133
+        },
+        "size": {
+          "x": 2910.093,
+          "y": 420,
+          "z": 2910.093
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RING-02",
+      "componentNameZh": "第2段八角圈梁",
+      "componentNameEn": "Octagonal ring beam 2",
+      "componentType": "BEAM",
+      "path": "components/PAV-RING-02.stl",
+      "originalPositionMm": [
+        0,
+        7180,
+        4388.428
+      ],
+      "explodedPositionMm": [
+        0,
+        9680,
+        9488.428
+      ],
+      "triangles": 12,
+      "bytes": 684,
+      "boundsMm": {
+        "min": {
+          "x": -1817.746,
+          "y": 6970,
+          "z": 4148.428
+        },
+        "max": {
+          "x": 1817.746,
+          "y": 7390,
+          "z": 4628.428
+        },
+        "size": {
+          "x": 3635.493,
+          "y": 420,
+          "z": 480
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RING-03",
+      "componentNameZh": "第3段八角圈梁",
+      "componentNameEn": "Octagonal ring beam 3",
+      "componentType": "BEAM",
+      "path": "components/PAV-RING-03.stl",
+      "originalPositionMm": [
+        -3103.087,
+        7180,
+        3103.087
+      ],
+      "explodedPositionMm": [
+        -6709.332,
+        9680,
+        6709.332
+      ],
+      "triangles": 12,
+      "bytes": 684,
+      "boundsMm": {
+        "min": {
+          "x": -4558.133,
+          "y": 6970,
+          "z": 1648.041
+        },
+        "max": {
+          "x": -1648.041,
+          "y": 7390,
+          "z": 4558.133
+        },
+        "size": {
+          "x": 2910.093,
+          "y": 420,
+          "z": 2910.093
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RING-04",
+      "componentNameZh": "第4段八角圈梁",
+      "componentNameEn": "Octagonal ring beam 4",
+      "componentType": "BEAM",
+      "path": "components/PAV-RING-04.stl",
+      "originalPositionMm": [
+        -4388.428,
+        7180,
+        0
+      ],
+      "explodedPositionMm": [
+        -9488.428,
+        9680,
+        0
+      ],
+      "triangles": 12,
+      "bytes": 684,
+      "boundsMm": {
+        "min": {
+          "x": -4628.428,
+          "y": 6970,
+          "z": -1817.746
+        },
+        "max": {
+          "x": -4148.428,
+          "y": 7390,
+          "z": 1817.746
+        },
+        "size": {
+          "x": 480,
+          "y": 420,
+          "z": 3635.493
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RING-05",
+      "componentNameZh": "第5段八角圈梁",
+      "componentNameEn": "Octagonal ring beam 5",
+      "componentType": "BEAM",
+      "path": "components/PAV-RING-05.stl",
+      "originalPositionMm": [
+        -3103.087,
+        7180,
+        -3103.087
+      ],
+      "explodedPositionMm": [
+        -6709.332,
+        9680,
+        -6709.332
+      ],
+      "triangles": 12,
+      "bytes": 684,
+      "boundsMm": {
+        "min": {
+          "x": -4558.133,
+          "y": 6970,
+          "z": -4558.133
+        },
+        "max": {
+          "x": -1648.041,
+          "y": 7390,
+          "z": -1648.041
+        },
+        "size": {
+          "x": 2910.093,
+          "y": 420,
+          "z": 2910.093
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RING-06",
+      "componentNameZh": "第6段八角圈梁",
+      "componentNameEn": "Octagonal ring beam 6",
+      "componentType": "BEAM",
+      "path": "components/PAV-RING-06.stl",
+      "originalPositionMm": [
+        0,
+        7180,
+        -4388.428
+      ],
+      "explodedPositionMm": [
+        0,
+        9680,
+        -9488.428
+      ],
+      "triangles": 12,
+      "bytes": 684,
+      "boundsMm": {
+        "min": {
+          "x": -1817.746,
+          "y": 6970,
+          "z": -4628.428
+        },
+        "max": {
+          "x": 1817.746,
+          "y": 7390,
+          "z": -4148.428
+        },
+        "size": {
+          "x": 3635.493,
+          "y": 420,
+          "z": 480
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RING-07",
+      "componentNameZh": "第7段八角圈梁",
+      "componentNameEn": "Octagonal ring beam 7",
+      "componentType": "BEAM",
+      "path": "components/PAV-RING-07.stl",
+      "originalPositionMm": [
+        3103.087,
+        7180,
+        -3103.087
+      ],
+      "explodedPositionMm": [
+        6709.332,
+        9680,
+        -6709.332
+      ],
+      "triangles": 12,
+      "bytes": 684,
+      "boundsMm": {
+        "min": {
+          "x": 1648.041,
+          "y": 6970,
+          "z": -4558.133
+        },
+        "max": {
+          "x": 4558.133,
+          "y": 7390,
+          "z": -1648.041
+        },
+        "size": {
+          "x": 2910.093,
+          "y": 420,
+          "z": 2910.093
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RING-08",
+      "componentNameZh": "第8段八角圈梁",
+      "componentNameEn": "Octagonal ring beam 8",
+      "componentType": "BEAM",
+      "path": "components/PAV-RING-08.stl",
+      "originalPositionMm": [
+        4388.428,
+        7180,
+        0
+      ],
+      "explodedPositionMm": [
+        9488.428,
+        9680,
+        0
+      ],
+      "triangles": 12,
+      "bytes": 684,
+      "boundsMm": {
+        "min": {
+          "x": 4148.428,
+          "y": 6970,
+          "z": -1817.746
+        },
+        "max": {
+          "x": 4628.428,
+          "y": 7390,
+          "z": 1817.746
+        },
+        "size": {
+          "x": 480,
+          "y": 420,
+          "z": 3635.493
+        }
+      }
+    },
+    {
+      "componentId": "PAV-CROSS-01",
+      "componentNameZh": "第1根对角承托梁",
+      "componentNameEn": "Diametral support beam 1",
+      "componentType": "BEAM",
+      "path": "components/PAV-CROSS-01.stl",
+      "originalPositionMm": [
+        0,
+        7560,
+        0
+      ],
+      "explodedPositionMm": [
+        -657.107,
+        10060,
+        5057.491
+      ],
+      "triangles": 12,
+      "bytes": 684,
+      "boundsMm": {
+        "min": {
+          "x": -4453.484,
+          "y": 7400,
+          "z": -1974.806
+        },
+        "max": {
+          "x": 4453.484,
+          "y": 7720,
+          "z": 1974.806
+        },
+        "size": {
+          "x": 8906.968,
+          "y": 320,
+          "z": 3949.612
+        }
+      }
+    },
+    {
+      "componentId": "PAV-CROSS-02",
+      "componentNameZh": "第2根对角承托梁",
+      "componentNameEn": "Diametral support beam 2",
+      "componentType": "BEAM",
+      "path": "components/PAV-CROSS-02.stl",
+      "originalPositionMm": [
+        0,
+        7560,
+        0
+      ],
+      "explodedPositionMm": [
+        -4930.671,
+        10060,
+        -1303.26
+      ],
+      "triangles": 12,
+      "bytes": 684,
+      "boundsMm": {
+        "min": {
+          "x": -1974.806,
+          "y": 7400,
+          "z": -4453.484
+        },
+        "max": {
+          "x": 1974.806,
+          "y": 7720,
+          "z": 4453.484
+        },
+        "size": {
+          "x": 3949.612,
+          "y": 320,
+          "z": 8906.968
+        }
+      }
+    },
+    {
+      "componentId": "PAV-CROSS-03",
+      "componentNameZh": "第3根对角承托梁",
+      "componentNameEn": "Diametral support beam 3",
+      "componentType": "BEAM",
+      "path": "components/PAV-CROSS-03.stl",
+      "originalPositionMm": [
+        0,
+        7560,
+        0
+      ],
+      "explodedPositionMm": [
+        1927.686,
+        10060,
+        -4721.655
+      ],
+      "triangles": 12,
+      "bytes": 684,
+      "boundsMm": {
+        "min": {
+          "x": -1974.806,
+          "y": 7400,
+          "z": -4453.484
+        },
+        "max": {
+          "x": 1974.806,
+          "y": 7720,
+          "z": 4453.484
+        },
+        "size": {
+          "x": 3949.612,
+          "y": 320,
+          "z": 8906.968
+        }
+      }
+    },
+    {
+      "componentId": "PAV-CROSS-04",
+      "componentNameZh": "第4根对角承托梁",
+      "componentNameEn": "Diametral support beam 4",
+      "componentType": "BEAM",
+      "path": "components/PAV-CROSS-04.stl",
+      "originalPositionMm": [
+        0,
+        7560,
+        0
+      ],
+      "explodedPositionMm": [
+        4433.927,
+        10060,
+        2519.978
+      ],
+      "triangles": 12,
+      "bytes": 684,
+      "boundsMm": {
+        "min": {
+          "x": -4453.484,
+          "y": 7400,
+          "z": -1974.806
+        },
+        "max": {
+          "x": 4453.484,
+          "y": 7720,
+          "z": 1974.806
+        },
+        "size": {
+          "x": 8906.968,
+          "y": 320,
+          "z": 3949.612
+        }
+      }
+    },
+    {
+      "componentId": "PAV-DG-01",
+      "componentNameZh": "第1组柱头斗拱",
+      "componentNameEn": "Column-head bracket set 1",
+      "componentType": "DOUGONG",
+      "path": "components/PAV-DG-01.stl",
+      "originalPositionMm": [
+        4388.428,
+        7720,
+        1817.746
+      ],
+      "explodedPositionMm": [
+        10301.257,
+        11920,
+        4266.92
+      ],
+      "triangles": 48,
+      "bytes": 2484,
+      "boundsMm": {
+        "min": {
+          "x": 3648.428,
+          "y": 7335,
+          "z": 1217.746
+        },
+        "max": {
+          "x": 5128.428,
+          "y": 8430,
+          "z": 2417.746
+        },
+        "size": {
+          "x": 1480,
+          "y": 1095,
+          "z": 1200
+        }
+      }
+    },
+    {
+      "componentId": "PAV-DG-02",
+      "componentNameZh": "第2组柱头斗拱",
+      "componentNameEn": "Column-head bracket set 2",
+      "componentType": "DOUGONG",
+      "path": "components/PAV-DG-02.stl",
+      "originalPositionMm": [
+        1817.746,
+        7720,
+        4388.428
+      ],
+      "explodedPositionMm": [
+        4266.92,
+        11920,
+        10301.257
+      ],
+      "triangles": 48,
+      "bytes": 2484,
+      "boundsMm": {
+        "min": {
+          "x": 1153.066,
+          "y": 7335,
+          "z": 3723.747
+        },
+        "max": {
+          "x": 2482.427,
+          "y": 8430,
+          "z": 5053.108
+        },
+        "size": {
+          "x": 1329.361,
+          "y": 1095,
+          "z": 1329.361
+        }
+      }
+    },
+    {
+      "componentId": "PAV-DG-03",
+      "componentNameZh": "第3组柱头斗拱",
+      "componentNameEn": "Column-head bracket set 3",
+      "componentType": "DOUGONG",
+      "path": "components/PAV-DG-03.stl",
+      "originalPositionMm": [
+        -1817.746,
+        7720,
+        4388.428
+      ],
+      "explodedPositionMm": [
+        -4266.92,
+        11920,
+        10301.257
+      ],
+      "triangles": 48,
+      "bytes": 2484,
+      "boundsMm": {
+        "min": {
+          "x": -2417.746,
+          "y": 7335,
+          "z": 3648.428
+        },
+        "max": {
+          "x": -1217.746,
+          "y": 8430,
+          "z": 5128.428
+        },
+        "size": {
+          "x": 1200,
+          "y": 1095,
+          "z": 1480
+        }
+      }
+    },
+    {
+      "componentId": "PAV-DG-04",
+      "componentNameZh": "第4组柱头斗拱",
+      "componentNameEn": "Column-head bracket set 4",
+      "componentType": "DOUGONG",
+      "path": "components/PAV-DG-04.stl",
+      "originalPositionMm": [
+        -4388.428,
+        7720,
+        1817.746
+      ],
+      "explodedPositionMm": [
+        -10301.257,
+        11920,
+        4266.92
+      ],
+      "triangles": 48,
+      "bytes": 2484,
+      "boundsMm": {
+        "min": {
+          "x": -5053.108,
+          "y": 7335,
+          "z": 1153.066
+        },
+        "max": {
+          "x": -3723.747,
+          "y": 8430,
+          "z": 2482.427
+        },
+        "size": {
+          "x": 1329.361,
+          "y": 1095,
+          "z": 1329.361
+        }
+      }
+    },
+    {
+      "componentId": "PAV-DG-05",
+      "componentNameZh": "第5组柱头斗拱",
+      "componentNameEn": "Column-head bracket set 5",
+      "componentType": "DOUGONG",
+      "path": "components/PAV-DG-05.stl",
+      "originalPositionMm": [
+        -4388.428,
+        7720,
+        -1817.746
+      ],
+      "explodedPositionMm": [
+        -10301.257,
+        11920,
+        -4266.92
+      ],
+      "triangles": 48,
+      "bytes": 2484,
+      "boundsMm": {
+        "min": {
+          "x": -5128.428,
+          "y": 7335,
+          "z": -2417.746
+        },
+        "max": {
+          "x": -3648.428,
+          "y": 8430,
+          "z": -1217.746
+        },
+        "size": {
+          "x": 1480,
+          "y": 1095,
+          "z": 1200
+        }
+      }
+    },
+    {
+      "componentId": "PAV-DG-06",
+      "componentNameZh": "第6组柱头斗拱",
+      "componentNameEn": "Column-head bracket set 6",
+      "componentType": "DOUGONG",
+      "path": "components/PAV-DG-06.stl",
+      "originalPositionMm": [
+        -1817.746,
+        7720,
+        -4388.428
+      ],
+      "explodedPositionMm": [
+        -4266.92,
+        11920,
+        -10301.257
+      ],
+      "triangles": 48,
+      "bytes": 2484,
+      "boundsMm": {
+        "min": {
+          "x": -2482.427,
+          "y": 7335,
+          "z": -5053.108
+        },
+        "max": {
+          "x": -1153.066,
+          "y": 8430,
+          "z": -3723.747
+        },
+        "size": {
+          "x": 1329.361,
+          "y": 1095,
+          "z": 1329.361
+        }
+      }
+    },
+    {
+      "componentId": "PAV-DG-07",
+      "componentNameZh": "第7组柱头斗拱",
+      "componentNameEn": "Column-head bracket set 7",
+      "componentType": "DOUGONG",
+      "path": "components/PAV-DG-07.stl",
+      "originalPositionMm": [
+        1817.746,
+        7720,
+        -4388.428
+      ],
+      "explodedPositionMm": [
+        4266.92,
+        11920,
+        -10301.257
+      ],
+      "triangles": 48,
+      "bytes": 2484,
+      "boundsMm": {
+        "min": {
+          "x": 1217.746,
+          "y": 7335,
+          "z": -5128.428
+        },
+        "max": {
+          "x": 2417.746,
+          "y": 8430,
+          "z": -3648.428
+        },
+        "size": {
+          "x": 1200,
+          "y": 1095,
+          "z": 1480
+        }
+      }
+    },
+    {
+      "componentId": "PAV-DG-08",
+      "componentNameZh": "第8组柱头斗拱",
+      "componentNameEn": "Column-head bracket set 8",
+      "componentType": "DOUGONG",
+      "path": "components/PAV-DG-08.stl",
+      "originalPositionMm": [
+        4388.428,
+        7720,
+        -1817.746
+      ],
+      "explodedPositionMm": [
+        10301.257,
+        11920,
+        -4266.92
+      ],
+      "triangles": 48,
+      "bytes": 2484,
+      "boundsMm": {
+        "min": {
+          "x": 3723.747,
+          "y": 7335,
+          "z": -2482.427
+        },
+        "max": {
+          "x": 5053.108,
+          "y": 8430,
+          "z": -1153.066
+        },
+        "size": {
+          "x": 1329.361,
+          "y": 1095,
+          "z": 1329.361
+        }
+      }
+    },
+    {
+      "componentId": "PAV-PURLIN-01",
+      "componentNameZh": "第1段八角檐檩",
+      "componentNameEn": "Octagonal eave purlin 1",
+      "componentType": "PURLIN",
+      "path": "components/PAV-PURLIN-01.stl",
+      "originalPositionMm": [
+        3103.087,
+        8500,
+        3103.087
+      ],
+      "explodedPositionMm": [
+        7345.728,
+        14300,
+        7345.728
+      ],
+      "triangles": 12,
+      "bytes": 684,
+      "boundsMm": {
+        "min": {
+          "x": 1711.68,
+          "y": 8380,
+          "z": 1711.68
+        },
+        "max": {
+          "x": 4494.494,
+          "y": 8620,
+          "z": 4494.494
+        },
+        "size": {
+          "x": 2782.813,
+          "y": 240,
+          "z": 2782.813
+        }
+      }
+    },
+    {
+      "componentId": "PAV-PURLIN-02",
+      "componentNameZh": "第2段八角檐檩",
+      "componentNameEn": "Octagonal eave purlin 2",
+      "componentType": "PURLIN",
+      "path": "components/PAV-PURLIN-02.stl",
+      "originalPositionMm": [
+        0,
+        8500,
+        4388.428
+      ],
+      "explodedPositionMm": [
+        0,
+        14300,
+        10388.428
+      ],
+      "triangles": 12,
+      "bytes": 684,
+      "boundsMm": {
+        "min": {
+          "x": -1817.746,
+          "y": 8380,
+          "z": 4238.428
+        },
+        "max": {
+          "x": 1817.746,
+          "y": 8620,
+          "z": 4538.428
+        },
+        "size": {
+          "x": 3635.493,
+          "y": 240,
+          "z": 300
+        }
+      }
+    },
+    {
+      "componentId": "PAV-PURLIN-03",
+      "componentNameZh": "第3段八角檐檩",
+      "componentNameEn": "Octagonal eave purlin 3",
+      "componentType": "PURLIN",
+      "path": "components/PAV-PURLIN-03.stl",
+      "originalPositionMm": [
+        -3103.087,
+        8500,
+        3103.087
+      ],
+      "explodedPositionMm": [
+        -7345.728,
+        14300,
+        7345.728
+      ],
+      "triangles": 12,
+      "bytes": 684,
+      "boundsMm": {
+        "min": {
+          "x": -4494.494,
+          "y": 8380,
+          "z": 1711.68
+        },
+        "max": {
+          "x": -1711.68,
+          "y": 8620,
+          "z": 4494.494
+        },
+        "size": {
+          "x": 2782.813,
+          "y": 240,
+          "z": 2782.813
+        }
+      }
+    },
+    {
+      "componentId": "PAV-PURLIN-04",
+      "componentNameZh": "第4段八角檐檩",
+      "componentNameEn": "Octagonal eave purlin 4",
+      "componentType": "PURLIN",
+      "path": "components/PAV-PURLIN-04.stl",
+      "originalPositionMm": [
+        -4388.428,
+        8500,
+        0
+      ],
+      "explodedPositionMm": [
+        -10388.428,
+        14300,
+        0
+      ],
+      "triangles": 12,
+      "bytes": 684,
+      "boundsMm": {
+        "min": {
+          "x": -4538.428,
+          "y": 8380,
+          "z": -1817.746
+        },
+        "max": {
+          "x": -4238.428,
+          "y": 8620,
+          "z": 1817.746
+        },
+        "size": {
+          "x": 300,
+          "y": 240,
+          "z": 3635.493
+        }
+      }
+    },
+    {
+      "componentId": "PAV-PURLIN-05",
+      "componentNameZh": "第5段八角檐檩",
+      "componentNameEn": "Octagonal eave purlin 5",
+      "componentType": "PURLIN",
+      "path": "components/PAV-PURLIN-05.stl",
+      "originalPositionMm": [
+        -3103.087,
+        8500,
+        -3103.087
+      ],
+      "explodedPositionMm": [
+        -7345.728,
+        14300,
+        -7345.728
+      ],
+      "triangles": 12,
+      "bytes": 684,
+      "boundsMm": {
+        "min": {
+          "x": -4494.494,
+          "y": 8380,
+          "z": -4494.494
+        },
+        "max": {
+          "x": -1711.68,
+          "y": 8620,
+          "z": -1711.68
+        },
+        "size": {
+          "x": 2782.813,
+          "y": 240,
+          "z": 2782.813
+        }
+      }
+    },
+    {
+      "componentId": "PAV-PURLIN-06",
+      "componentNameZh": "第6段八角檐檩",
+      "componentNameEn": "Octagonal eave purlin 6",
+      "componentType": "PURLIN",
+      "path": "components/PAV-PURLIN-06.stl",
+      "originalPositionMm": [
+        0,
+        8500,
+        -4388.428
+      ],
+      "explodedPositionMm": [
+        0,
+        14300,
+        -10388.428
+      ],
+      "triangles": 12,
+      "bytes": 684,
+      "boundsMm": {
+        "min": {
+          "x": -1817.746,
+          "y": 8380,
+          "z": -4538.428
+        },
+        "max": {
+          "x": 1817.746,
+          "y": 8620,
+          "z": -4238.428
+        },
+        "size": {
+          "x": 3635.493,
+          "y": 240,
+          "z": 300
+        }
+      }
+    },
+    {
+      "componentId": "PAV-PURLIN-07",
+      "componentNameZh": "第7段八角檐檩",
+      "componentNameEn": "Octagonal eave purlin 7",
+      "componentType": "PURLIN",
+      "path": "components/PAV-PURLIN-07.stl",
+      "originalPositionMm": [
+        3103.087,
+        8500,
+        -3103.087
+      ],
+      "explodedPositionMm": [
+        7345.728,
+        14300,
+        -7345.728
+      ],
+      "triangles": 12,
+      "bytes": 684,
+      "boundsMm": {
+        "min": {
+          "x": 1711.68,
+          "y": 8380,
+          "z": -4494.494
+        },
+        "max": {
+          "x": 4494.494,
+          "y": 8620,
+          "z": -1711.68
+        },
+        "size": {
+          "x": 2782.813,
+          "y": 240,
+          "z": 2782.813
+        }
+      }
+    },
+    {
+      "componentId": "PAV-PURLIN-08",
+      "componentNameZh": "第8段八角檐檩",
+      "componentNameEn": "Octagonal eave purlin 8",
+      "componentType": "PURLIN",
+      "path": "components/PAV-PURLIN-08.stl",
+      "originalPositionMm": [
+        4388.428,
+        8500,
+        0
+      ],
+      "explodedPositionMm": [
+        10388.428,
+        14300,
+        0
+      ],
+      "triangles": 12,
+      "bytes": 684,
+      "boundsMm": {
+        "min": {
+          "x": 4238.428,
+          "y": 8380,
+          "z": -1817.746
+        },
+        "max": {
+          "x": 4538.428,
+          "y": 8620,
+          "z": 1817.746
+        },
+        "size": {
+          "x": 300,
+          "y": 240,
+          "z": 3635.493
+        }
+      }
+    },
+    {
+      "componentId": "PAV-KINGPOST-01",
+      "componentNameZh": "中央雷公柱",
+      "componentNameEn": "Central kingpost",
+      "componentType": "COLUMN",
+      "path": "components/PAV-KINGPOST-01.stl",
+      "originalPositionMm": [
+        0,
+        8960,
+        0
+      ],
+      "explodedPositionMm": [
+        0,
+        15760,
+        0
+      ],
+      "triangles": 72,
+      "bytes": 3684,
+      "boundsMm": {
+        "min": {
+          "x": -410,
+          "y": 7530,
+          "z": -410
+        },
+        "max": {
+          "x": 410,
+          "y": 10380,
+          "z": 410
+        },
+        "size": {
+          "x": 820,
+          "y": 2850,
+          "z": 820
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAFTER-01",
+      "componentNameZh": "第1根角梁",
+      "componentNameEn": "Principal hip rafter 1",
+      "componentType": "RAFTER",
+      "path": "components/PAV-RAFTER-01.stl",
+      "originalPositionMm": [
+        3182.765,
+        9085,
+        1318.344
+      ],
+      "explodedPositionMm": [
+        10666.189,
+        16285,
+        4418.08
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -67.961,
+          "y": 7570.392,
+          "z": -127.145
+        },
+        "max": {
+          "x": 6438.928,
+          "y": 10590.008,
+          "z": 2774.006
+        },
+        "size": {
+          "x": 6506.889,
+          "y": 3019.616,
+          "z": 2901.151
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAFTER-02",
+      "componentNameZh": "第1根放射椽",
+      "componentNameEn": "Intermediate radial rafter 1",
+      "componentType": "RAFTER",
+      "path": "components/PAV-RAFTER-02.stl",
+      "originalPositionMm": [
+        2351.13,
+        9045,
+        2351.13
+      ],
+      "explodedPositionMm": [
+        8078.695,
+        16245,
+        8078.695
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -70.711,
+          "y": 7520.732,
+          "z": -70.711
+        },
+        "max": {
+          "x": 4778.627,
+          "y": 10561.914,
+          "z": 4778.627
+        },
+        "size": {
+          "x": 4849.338,
+          "y": 3041.182,
+          "z": 4849.338
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAFTER-03",
+      "componentNameZh": "第2根角梁",
+      "componentNameEn": "Principal hip rafter 2",
+      "componentType": "RAFTER",
+      "path": "components/PAV-RAFTER-03.stl",
+      "originalPositionMm": [
+        1318.344,
+        9085,
+        3182.765
+      ],
+      "explodedPositionMm": [
+        4418.08,
+        16285,
+        10666.189
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -127.145,
+          "y": 7570.392,
+          "z": -67.961
+        },
+        "max": {
+          "x": 2774.006,
+          "y": 10590.008,
+          "z": 6438.928
+        },
+        "size": {
+          "x": 2901.151,
+          "y": 3019.616,
+          "z": 6506.889
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAFTER-04",
+      "componentNameZh": "第2根放射椽",
+      "componentNameEn": "Intermediate radial rafter 2",
+      "componentType": "RAFTER",
+      "path": "components/PAV-RAFTER-04.stl",
+      "originalPositionMm": [
+        0,
+        9045,
+        3325
+      ],
+      "explodedPositionMm": [
+        0,
+        16245,
+        11425
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -108,
+          "y": 7520.732,
+          "z": -39.392
+        },
+        "max": {
+          "x": 108,
+          "y": 10561.914,
+          "z": 6692.543
+        },
+        "size": {
+          "x": 216,
+          "y": 3041.182,
+          "z": 6731.935
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAFTER-05",
+      "componentNameZh": "第3根角梁",
+      "componentNameEn": "Principal hip rafter 3",
+      "componentType": "RAFTER",
+      "path": "components/PAV-RAFTER-05.stl",
+      "originalPositionMm": [
+        -1318.344,
+        9085,
+        3182.765
+      ],
+      "explodedPositionMm": [
+        -4418.08,
+        16285,
+        10666.189
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -2774.006,
+          "y": 7570.392,
+          "z": -67.961
+        },
+        "max": {
+          "x": 127.145,
+          "y": 10590.008,
+          "z": 6438.928
+        },
+        "size": {
+          "x": 2901.151,
+          "y": 3019.616,
+          "z": 6506.889
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAFTER-06",
+      "componentNameZh": "第3根放射椽",
+      "componentNameEn": "Intermediate radial rafter 3",
+      "componentType": "RAFTER",
+      "path": "components/PAV-RAFTER-06.stl",
+      "originalPositionMm": [
+        -2351.13,
+        9045,
+        2351.13
+      ],
+      "explodedPositionMm": [
+        -8078.695,
+        16245,
+        8078.695
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -4778.627,
+          "y": 7520.732,
+          "z": -70.711
+        },
+        "max": {
+          "x": 70.711,
+          "y": 10561.914,
+          "z": 4778.627
+        },
+        "size": {
+          "x": 4849.338,
+          "y": 3041.182,
+          "z": 4849.338
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAFTER-07",
+      "componentNameZh": "第4根角梁",
+      "componentNameEn": "Principal hip rafter 4",
+      "componentType": "RAFTER",
+      "path": "components/PAV-RAFTER-07.stl",
+      "originalPositionMm": [
+        -3182.765,
+        9085,
+        1318.344
+      ],
+      "explodedPositionMm": [
+        -10666.189,
+        16285,
+        4418.08
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -6438.928,
+          "y": 7570.392,
+          "z": -127.145
+        },
+        "max": {
+          "x": 67.961,
+          "y": 10590.008,
+          "z": 2774.006
+        },
+        "size": {
+          "x": 6506.889,
+          "y": 3019.616,
+          "z": 2901.151
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAFTER-08",
+      "componentNameZh": "第4根放射椽",
+      "componentNameEn": "Intermediate radial rafter 4",
+      "componentType": "RAFTER",
+      "path": "components/PAV-RAFTER-08.stl",
+      "originalPositionMm": [
+        -3325,
+        9045,
+        0
+      ],
+      "explodedPositionMm": [
+        -11425,
+        16245,
+        0
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -6692.543,
+          "y": 7520.732,
+          "z": -108
+        },
+        "max": {
+          "x": 39.392,
+          "y": 10561.914,
+          "z": 108
+        },
+        "size": {
+          "x": 6731.935,
+          "y": 3041.182,
+          "z": 216
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAFTER-09",
+      "componentNameZh": "第5根角梁",
+      "componentNameEn": "Principal hip rafter 5",
+      "componentType": "RAFTER",
+      "path": "components/PAV-RAFTER-09.stl",
+      "originalPositionMm": [
+        -3182.765,
+        9085,
+        -1318.344
+      ],
+      "explodedPositionMm": [
+        -10666.189,
+        16285,
+        -4418.08
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -6438.928,
+          "y": 7570.392,
+          "z": -2774.006
+        },
+        "max": {
+          "x": 67.961,
+          "y": 10590.008,
+          "z": 127.145
+        },
+        "size": {
+          "x": 6506.889,
+          "y": 3019.616,
+          "z": 2901.151
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAFTER-10",
+      "componentNameZh": "第5根放射椽",
+      "componentNameEn": "Intermediate radial rafter 5",
+      "componentType": "RAFTER",
+      "path": "components/PAV-RAFTER-10.stl",
+      "originalPositionMm": [
+        -2351.13,
+        9045,
+        -2351.13
+      ],
+      "explodedPositionMm": [
+        -8078.695,
+        16245,
+        -8078.695
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -4778.627,
+          "y": 7520.732,
+          "z": -4778.627
+        },
+        "max": {
+          "x": 70.711,
+          "y": 10561.914,
+          "z": 70.711
+        },
+        "size": {
+          "x": 4849.338,
+          "y": 3041.182,
+          "z": 4849.338
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAFTER-11",
+      "componentNameZh": "第6根角梁",
+      "componentNameEn": "Principal hip rafter 6",
+      "componentType": "RAFTER",
+      "path": "components/PAV-RAFTER-11.stl",
+      "originalPositionMm": [
+        -1318.344,
+        9085,
+        -3182.765
+      ],
+      "explodedPositionMm": [
+        -4418.08,
+        16285,
+        -10666.189
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -2774.006,
+          "y": 7570.392,
+          "z": -6438.928
+        },
+        "max": {
+          "x": 127.145,
+          "y": 10590.008,
+          "z": 67.961
+        },
+        "size": {
+          "x": 2901.151,
+          "y": 3019.616,
+          "z": 6506.889
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAFTER-12",
+      "componentNameZh": "第6根放射椽",
+      "componentNameEn": "Intermediate radial rafter 6",
+      "componentType": "RAFTER",
+      "path": "components/PAV-RAFTER-12.stl",
+      "originalPositionMm": [
+        0,
+        9045,
+        -3325
+      ],
+      "explodedPositionMm": [
+        0,
+        16245,
+        -11425
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -108,
+          "y": 7520.732,
+          "z": -6692.543
+        },
+        "max": {
+          "x": 108,
+          "y": 10561.914,
+          "z": 39.392
+        },
+        "size": {
+          "x": 216,
+          "y": 3041.182,
+          "z": 6731.935
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAFTER-13",
+      "componentNameZh": "第7根角梁",
+      "componentNameEn": "Principal hip rafter 7",
+      "componentType": "RAFTER",
+      "path": "components/PAV-RAFTER-13.stl",
+      "originalPositionMm": [
+        1318.344,
+        9085,
+        -3182.765
+      ],
+      "explodedPositionMm": [
+        4418.08,
+        16285,
+        -10666.189
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -127.145,
+          "y": 7570.392,
+          "z": -6438.928
+        },
+        "max": {
+          "x": 2774.006,
+          "y": 10590.008,
+          "z": 67.961
+        },
+        "size": {
+          "x": 2901.151,
+          "y": 3019.616,
+          "z": 6506.889
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAFTER-14",
+      "componentNameZh": "第7根放射椽",
+      "componentNameEn": "Intermediate radial rafter 7",
+      "componentType": "RAFTER",
+      "path": "components/PAV-RAFTER-14.stl",
+      "originalPositionMm": [
+        2351.13,
+        9045,
+        -2351.13
+      ],
+      "explodedPositionMm": [
+        8078.695,
+        16245,
+        -8078.695
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -70.711,
+          "y": 7520.732,
+          "z": -4778.627
+        },
+        "max": {
+          "x": 4778.627,
+          "y": 10561.914,
+          "z": 70.711
+        },
+        "size": {
+          "x": 4849.338,
+          "y": 3041.182,
+          "z": 4849.338
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAFTER-15",
+      "componentNameZh": "第8根角梁",
+      "componentNameEn": "Principal hip rafter 8",
+      "componentType": "RAFTER",
+      "path": "components/PAV-RAFTER-15.stl",
+      "originalPositionMm": [
+        3182.765,
+        9085,
+        -1318.344
+      ],
+      "explodedPositionMm": [
+        10666.189,
+        16285,
+        -4418.08
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -67.961,
+          "y": 7570.392,
+          "z": -2774.006
+        },
+        "max": {
+          "x": 6438.928,
+          "y": 10590.008,
+          "z": 127.145
+        },
+        "size": {
+          "x": 6506.889,
+          "y": 3019.616,
+          "z": 2901.151
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAFTER-16",
+      "componentNameZh": "第8根放射椽",
+      "componentNameEn": "Intermediate radial rafter 8",
+      "componentType": "RAFTER",
+      "path": "components/PAV-RAFTER-16.stl",
+      "originalPositionMm": [
+        3325,
+        9045,
+        0
+      ],
+      "explodedPositionMm": [
+        11425,
+        16245,
+        0
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -39.392,
+          "y": 7520.732,
+          "z": -108
+        },
+        "max": {
+          "x": 6692.543,
+          "y": 10561.914,
+          "z": 108
+        },
+        "size": {
+          "x": 6731.935,
+          "y": 3041.182,
+          "z": 216
+        }
+      }
+    },
+    {
+      "componentId": "PAV-ROOF-01",
+      "componentNameZh": "第1片攒尖瓦面",
+      "componentNameEn": "Pyramidal roof sector 1",
+      "componentType": "ROOF_PANEL",
+      "path": "components/PAV-ROOF-01.stl",
+      "originalPositionMm": [
+        2983.319,
+        8703.333,
+        2983.319
+      ],
+      "explodedPositionMm": [
+        10195.808,
+        18903.333,
+        10195.808
+      ],
+      "triangles": 8,
+      "bytes": 484,
+      "boundsMm": {
+        "min": {
+          "x": -13.331,
+          "y": 7689.14,
+          "z": -13.331
+        },
+        "max": {
+          "x": 6341.906,
+          "y": 10690.86,
+          "z": 6341.906
+        },
+        "size": {
+          "x": 6355.237,
+          "y": 3001.721,
+          "z": 6355.237
+        }
+      }
+    },
+    {
+      "componentId": "PAV-ROOF-02",
+      "componentNameZh": "第2片攒尖瓦面",
+      "componentNameEn": "Pyramidal roof sector 2",
+      "componentType": "ROOF_PANEL",
+      "path": "components/PAV-ROOF-02.stl",
+      "originalPositionMm": [
+        0,
+        8703.333,
+        4219.05
+      ],
+      "explodedPositionMm": [
+        0,
+        18903.333,
+        14419.05
+      ],
+      "triangles": 8,
+      "bytes": 484,
+      "boundsMm": {
+        "min": {
+          "x": -2621.382,
+          "y": 7689.14,
+          "z": -18.853
+        },
+        "max": {
+          "x": 2621.382,
+          "y": 10690.86,
+          "z": 6347.428
+        },
+        "size": {
+          "x": 5242.763,
+          "y": 3001.721,
+          "z": 6366.281
+        }
+      }
+    },
+    {
+      "componentId": "PAV-ROOF-03",
+      "componentNameZh": "第3片攒尖瓦面",
+      "componentNameEn": "Pyramidal roof sector 3",
+      "componentType": "ROOF_PANEL",
+      "path": "components/PAV-ROOF-03.stl",
+      "originalPositionMm": [
+        -2983.319,
+        8703.333,
+        2983.319
+      ],
+      "explodedPositionMm": [
+        -10195.808,
+        18903.333,
+        10195.808
+      ],
+      "triangles": 8,
+      "bytes": 484,
+      "boundsMm": {
+        "min": {
+          "x": -6341.906,
+          "y": 7689.14,
+          "z": -13.331
+        },
+        "max": {
+          "x": 13.331,
+          "y": 10690.86,
+          "z": 6341.906
+        },
+        "size": {
+          "x": 6355.237,
+          "y": 3001.721,
+          "z": 6355.237
+        }
+      }
+    },
+    {
+      "componentId": "PAV-ROOF-04",
+      "componentNameZh": "第4片攒尖瓦面",
+      "componentNameEn": "Pyramidal roof sector 4",
+      "componentType": "ROOF_PANEL",
+      "path": "components/PAV-ROOF-04.stl",
+      "originalPositionMm": [
+        -4219.05,
+        8703.333,
+        0
+      ],
+      "explodedPositionMm": [
+        -14419.05,
+        18903.333,
+        0
+      ],
+      "triangles": 8,
+      "bytes": 484,
+      "boundsMm": {
+        "min": {
+          "x": -6347.428,
+          "y": 7689.14,
+          "z": -2621.382
+        },
+        "max": {
+          "x": 18.853,
+          "y": 10690.86,
+          "z": 2621.382
+        },
+        "size": {
+          "x": 6366.281,
+          "y": 3001.721,
+          "z": 5242.763
+        }
+      }
+    },
+    {
+      "componentId": "PAV-ROOF-05",
+      "componentNameZh": "第5片攒尖瓦面",
+      "componentNameEn": "Pyramidal roof sector 5",
+      "componentType": "ROOF_PANEL",
+      "path": "components/PAV-ROOF-05.stl",
+      "originalPositionMm": [
+        -2983.319,
+        8703.333,
+        -2983.319
+      ],
+      "explodedPositionMm": [
+        -10195.808,
+        18903.333,
+        -10195.808
+      ],
+      "triangles": 8,
+      "bytes": 484,
+      "boundsMm": {
+        "min": {
+          "x": -6341.906,
+          "y": 7689.14,
+          "z": -6341.906
+        },
+        "max": {
+          "x": 13.331,
+          "y": 10690.86,
+          "z": 13.331
+        },
+        "size": {
+          "x": 6355.237,
+          "y": 3001.721,
+          "z": 6355.237
+        }
+      }
+    },
+    {
+      "componentId": "PAV-ROOF-06",
+      "componentNameZh": "第6片攒尖瓦面",
+      "componentNameEn": "Pyramidal roof sector 6",
+      "componentType": "ROOF_PANEL",
+      "path": "components/PAV-ROOF-06.stl",
+      "originalPositionMm": [
+        0,
+        8703.333,
+        -4219.05
+      ],
+      "explodedPositionMm": [
+        0,
+        18903.333,
+        -14419.05
+      ],
+      "triangles": 8,
+      "bytes": 484,
+      "boundsMm": {
+        "min": {
+          "x": -2621.382,
+          "y": 7689.14,
+          "z": -6347.428
+        },
+        "max": {
+          "x": 2621.382,
+          "y": 10690.86,
+          "z": 18.853
+        },
+        "size": {
+          "x": 5242.763,
+          "y": 3001.721,
+          "z": 6366.281
+        }
+      }
+    },
+    {
+      "componentId": "PAV-ROOF-07",
+      "componentNameZh": "第7片攒尖瓦面",
+      "componentNameEn": "Pyramidal roof sector 7",
+      "componentType": "ROOF_PANEL",
+      "path": "components/PAV-ROOF-07.stl",
+      "originalPositionMm": [
+        2983.319,
+        8703.333,
+        -2983.319
+      ],
+      "explodedPositionMm": [
+        10195.808,
+        18903.333,
+        -10195.808
+      ],
+      "triangles": 8,
+      "bytes": 484,
+      "boundsMm": {
+        "min": {
+          "x": -13.331,
+          "y": 7689.14,
+          "z": -6341.906
+        },
+        "max": {
+          "x": 6341.906,
+          "y": 10690.86,
+          "z": 13.331
+        },
+        "size": {
+          "x": 6355.237,
+          "y": 3001.721,
+          "z": 6355.237
+        }
+      }
+    },
+    {
+      "componentId": "PAV-ROOF-08",
+      "componentNameZh": "第8片攒尖瓦面",
+      "componentNameEn": "Pyramidal roof sector 8",
+      "componentType": "ROOF_PANEL",
+      "path": "components/PAV-ROOF-08.stl",
+      "originalPositionMm": [
+        4219.05,
+        8703.333,
+        0
+      ],
+      "explodedPositionMm": [
+        14419.05,
+        18903.333,
+        0
+      ],
+      "triangles": 8,
+      "bytes": 484,
+      "boundsMm": {
+        "min": {
+          "x": -18.853,
+          "y": 7689.14,
+          "z": -2621.382
+        },
+        "max": {
+          "x": 6347.428,
+          "y": 10690.86,
+          "z": 2621.382
+        },
+        "size": {
+          "x": 6366.281,
+          "y": 3001.721,
+          "z": 5242.763
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RIDGE-01",
+      "componentNameZh": "第1条垂脊",
+      "componentNameEn": "Hip ridge 1",
+      "componentType": "RIDGE",
+      "path": "components/PAV-RIDGE-01.stl",
+      "originalPositionMm": [
+        3192.004,
+        9325,
+        1322.171
+      ],
+      "explodedPositionMm": [
+        13539.455,
+        22425,
+        5608.226
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -84.667,
+          "y": 7743.626,
+          "z": -157.258
+        },
+        "max": {
+          "x": 6462.403,
+          "y": 10917.284,
+          "z": 2789.952
+        },
+        "size": {
+          "x": 6547.07,
+          "y": 3173.658,
+          "z": 2947.21
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RIDGE-02",
+      "componentNameZh": "第2条垂脊",
+      "componentNameEn": "Hip ridge 2",
+      "componentType": "RIDGE",
+      "path": "components/PAV-RIDGE-02.stl",
+      "originalPositionMm": [
+        1322.171,
+        9325,
+        3192.004
+      ],
+      "explodedPositionMm": [
+        5608.226,
+        22425,
+        13539.455
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -157.258,
+          "y": 7743.626,
+          "z": -84.667
+        },
+        "max": {
+          "x": 2789.952,
+          "y": 10917.284,
+          "z": 6462.403
+        },
+        "size": {
+          "x": 2947.21,
+          "y": 3173.658,
+          "z": 6547.07
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RIDGE-03",
+      "componentNameZh": "第3条垂脊",
+      "componentNameEn": "Hip ridge 3",
+      "componentType": "RIDGE",
+      "path": "components/PAV-RIDGE-03.stl",
+      "originalPositionMm": [
+        -1322.171,
+        9325,
+        3192.004
+      ],
+      "explodedPositionMm": [
+        -5608.226,
+        22425,
+        13539.455
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -2789.952,
+          "y": 7743.626,
+          "z": -84.667
+        },
+        "max": {
+          "x": 157.258,
+          "y": 10917.284,
+          "z": 6462.403
+        },
+        "size": {
+          "x": 2947.21,
+          "y": 3173.658,
+          "z": 6547.07
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RIDGE-04",
+      "componentNameZh": "第4条垂脊",
+      "componentNameEn": "Hip ridge 4",
+      "componentType": "RIDGE",
+      "path": "components/PAV-RIDGE-04.stl",
+      "originalPositionMm": [
+        -3192.004,
+        9325,
+        1322.171
+      ],
+      "explodedPositionMm": [
+        -13539.455,
+        22425,
+        5608.226
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -6462.403,
+          "y": 7743.626,
+          "z": -157.258
+        },
+        "max": {
+          "x": 84.667,
+          "y": 10917.284,
+          "z": 2789.952
+        },
+        "size": {
+          "x": 6547.07,
+          "y": 3173.658,
+          "z": 2947.21
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RIDGE-05",
+      "componentNameZh": "第5条垂脊",
+      "componentNameEn": "Hip ridge 5",
+      "componentType": "RIDGE",
+      "path": "components/PAV-RIDGE-05.stl",
+      "originalPositionMm": [
+        -3192.004,
+        9325,
+        -1322.171
+      ],
+      "explodedPositionMm": [
+        -13539.455,
+        22425,
+        -5608.226
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -6462.403,
+          "y": 7743.626,
+          "z": -2789.952
+        },
+        "max": {
+          "x": 84.667,
+          "y": 10917.284,
+          "z": 157.258
+        },
+        "size": {
+          "x": 6547.07,
+          "y": 3173.658,
+          "z": 2947.21
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RIDGE-06",
+      "componentNameZh": "第6条垂脊",
+      "componentNameEn": "Hip ridge 6",
+      "componentType": "RIDGE",
+      "path": "components/PAV-RIDGE-06.stl",
+      "originalPositionMm": [
+        -1322.171,
+        9325,
+        -3192.004
+      ],
+      "explodedPositionMm": [
+        -5608.226,
+        22425,
+        -13539.455
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -2789.952,
+          "y": 7743.626,
+          "z": -6462.403
+        },
+        "max": {
+          "x": 157.258,
+          "y": 10917.284,
+          "z": 84.667
+        },
+        "size": {
+          "x": 2947.21,
+          "y": 3173.658,
+          "z": 6547.07
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RIDGE-07",
+      "componentNameZh": "第7条垂脊",
+      "componentNameEn": "Hip ridge 7",
+      "componentType": "RIDGE",
+      "path": "components/PAV-RIDGE-07.stl",
+      "originalPositionMm": [
+        1322.171,
+        9325,
+        -3192.004
+      ],
+      "explodedPositionMm": [
+        5608.226,
+        22425,
+        -13539.455
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -157.258,
+          "y": 7743.626,
+          "z": -6462.403
+        },
+        "max": {
+          "x": 2789.952,
+          "y": 10917.284,
+          "z": 84.667
+        },
+        "size": {
+          "x": 2947.21,
+          "y": 3173.658,
+          "z": 6547.07
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RIDGE-08",
+      "componentNameZh": "第8条垂脊",
+      "componentNameEn": "Hip ridge 8",
+      "componentType": "RIDGE",
+      "path": "components/PAV-RIDGE-08.stl",
+      "originalPositionMm": [
+        3192.004,
+        9325,
+        -1322.171
+      ],
+      "explodedPositionMm": [
+        13539.455,
+        22425,
+        -5608.226
+      ],
+      "triangles": 32,
+      "bytes": 1684,
+      "boundsMm": {
+        "min": {
+          "x": -84.667,
+          "y": 7743.626,
+          "z": -2789.952
+        },
+        "max": {
+          "x": 6462.403,
+          "y": 10917.284,
+          "z": 157.258
+        },
+        "size": {
+          "x": 6547.07,
+          "y": 3173.658,
+          "z": 2947.21
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAIL-01",
+      "componentNameZh": "第1面坐凳栏杆",
+      "componentNameEn": "Perimeter railing bay 1",
+      "componentType": "ENCLOSURE",
+      "path": "components/PAV-RAIL-01.stl",
+      "originalPositionMm": [
+        3103.087,
+        1820,
+        3103.087
+      ],
+      "explodedPositionMm": [
+        7487.149,
+        3020,
+        7487.149
+      ],
+      "triangles": 84,
+      "bytes": 4284,
+      "boundsMm": {
+        "min": {
+          "x": 2015.736,
+          "y": 1705,
+          "z": 2015.736
+        },
+        "max": {
+          "x": 4190.438,
+          "y": 2720,
+          "z": 4190.438
+        },
+        "size": {
+          "x": 2174.702,
+          "y": 1015,
+          "z": 2174.702
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAIL-02",
+      "componentNameZh": "第2面坐凳栏杆",
+      "componentNameEn": "Perimeter railing bay 2",
+      "componentType": "ENCLOSURE",
+      "path": "components/PAV-RAIL-02.stl",
+      "originalPositionMm": [
+        0,
+        1820,
+        4388.428
+      ],
+      "explodedPositionMm": [
+        0,
+        3020,
+        10588.428
+      ],
+      "triangles": 84,
+      "bytes": 4284,
+      "boundsMm": {
+        "min": {
+          "x": -1457.746,
+          "y": 1705,
+          "z": 4308.428
+        },
+        "max": {
+          "x": 1457.746,
+          "y": 2720,
+          "z": 4468.428
+        },
+        "size": {
+          "x": 2915.492,
+          "y": 1015,
+          "z": 160
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAIL-03",
+      "componentNameZh": "第3面坐凳栏杆",
+      "componentNameEn": "Perimeter railing bay 3",
+      "componentType": "ENCLOSURE",
+      "path": "components/PAV-RAIL-03.stl",
+      "originalPositionMm": [
+        -3103.087,
+        1820,
+        3103.087
+      ],
+      "explodedPositionMm": [
+        -7487.149,
+        3020,
+        7487.149
+      ],
+      "triangles": 84,
+      "bytes": 4284,
+      "boundsMm": {
+        "min": {
+          "x": -4190.438,
+          "y": 1705,
+          "z": 2015.736
+        },
+        "max": {
+          "x": -2015.736,
+          "y": 2720,
+          "z": 4190.438
+        },
+        "size": {
+          "x": 2174.702,
+          "y": 1015,
+          "z": 2174.702
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAIL-04",
+      "componentNameZh": "第4面坐凳栏杆",
+      "componentNameEn": "Perimeter railing bay 4",
+      "componentType": "ENCLOSURE",
+      "path": "components/PAV-RAIL-04.stl",
+      "originalPositionMm": [
+        -4388.428,
+        1820,
+        0
+      ],
+      "explodedPositionMm": [
+        -10588.428,
+        3020,
+        0
+      ],
+      "triangles": 84,
+      "bytes": 4284,
+      "boundsMm": {
+        "min": {
+          "x": -4468.428,
+          "y": 1705,
+          "z": -1457.746
+        },
+        "max": {
+          "x": -4308.428,
+          "y": 2720,
+          "z": 1457.746
+        },
+        "size": {
+          "x": 160,
+          "y": 1015,
+          "z": 2915.492
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAIL-05",
+      "componentNameZh": "第5面坐凳栏杆",
+      "componentNameEn": "Perimeter railing bay 5",
+      "componentType": "ENCLOSURE",
+      "path": "components/PAV-RAIL-05.stl",
+      "originalPositionMm": [
+        -3103.087,
+        1820,
+        -3103.087
+      ],
+      "explodedPositionMm": [
+        -7487.149,
+        3020,
+        -7487.149
+      ],
+      "triangles": 84,
+      "bytes": 4284,
+      "boundsMm": {
+        "min": {
+          "x": -4190.438,
+          "y": 1705,
+          "z": -4190.438
+        },
+        "max": {
+          "x": -2015.736,
+          "y": 2720,
+          "z": -2015.736
+        },
+        "size": {
+          "x": 2174.702,
+          "y": 1015,
+          "z": 2174.702
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAIL-06",
+      "componentNameZh": "第6面坐凳栏杆",
+      "componentNameEn": "Perimeter railing bay 6",
+      "componentType": "ENCLOSURE",
+      "path": "components/PAV-RAIL-06.stl",
+      "originalPositionMm": [
+        0,
+        1820,
+        -4388.428
+      ],
+      "explodedPositionMm": [
+        0,
+        3020,
+        -10588.428
+      ],
+      "triangles": 84,
+      "bytes": 4284,
+      "boundsMm": {
+        "min": {
+          "x": -1457.746,
+          "y": 1705,
+          "z": -4468.428
+        },
+        "max": {
+          "x": 1457.746,
+          "y": 2720,
+          "z": -4308.428
+        },
+        "size": {
+          "x": 2915.492,
+          "y": 1015,
+          "z": 160
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAIL-07",
+      "componentNameZh": "第7面坐凳栏杆",
+      "componentNameEn": "Perimeter railing bay 7",
+      "componentType": "ENCLOSURE",
+      "path": "components/PAV-RAIL-07.stl",
+      "originalPositionMm": [
+        3103.087,
+        1820,
+        -3103.087
+      ],
+      "explodedPositionMm": [
+        7487.149,
+        3020,
+        -7487.149
+      ],
+      "triangles": 84,
+      "bytes": 4284,
+      "boundsMm": {
+        "min": {
+          "x": 2015.736,
+          "y": 1705,
+          "z": -4190.438
+        },
+        "max": {
+          "x": 4190.438,
+          "y": 2720,
+          "z": -2015.736
+        },
+        "size": {
+          "x": 2174.702,
+          "y": 1015,
+          "z": 2174.702
+        }
+      }
+    },
+    {
+      "componentId": "PAV-RAIL-08",
+      "componentNameZh": "第8面坐凳栏杆",
+      "componentNameEn": "Perimeter railing bay 8",
+      "componentType": "ENCLOSURE",
+      "path": "components/PAV-RAIL-08.stl",
+      "originalPositionMm": [
+        4388.428,
+        1820,
+        0
+      ],
+      "explodedPositionMm": [
+        10588.428,
+        3020,
+        0
+      ],
+      "triangles": 84,
+      "bytes": 4284,
+      "boundsMm": {
+        "min": {
+          "x": 4308.428,
+          "y": 1705,
+          "z": -1457.746
+        },
+        "max": {
+          "x": 4468.428,
+          "y": 2720,
+          "z": 1457.746
+        },
+        "size": {
+          "x": 160,
+          "y": 1015,
+          "z": 2915.492
+        }
+      }
+    },
+    {
+      "componentId": "PAV-FINIAL-01",
+      "componentNameZh": "宝顶承座",
+      "componentNameEn": "Finial base",
+      "componentType": "RIDGE",
+      "path": "components/PAV-FINIAL-01.stl",
+      "originalPositionMm": [
+        0,
+        10880,
+        0
+      ],
+      "explodedPositionMm": [
+        -103.076,
+        26180,
+        793.332
+      ],
+      "triangles": 48,
+      "bytes": 2484,
+      "boundsMm": {
+        "min": {
+          "x": -620,
+          "y": 10690,
+          "z": -620
+        },
+        "max": {
+          "x": 620,
+          "y": 11070,
+          "z": 620
+        },
+        "size": {
+          "x": 1240,
+          "y": 380,
+          "z": 1240
+        }
+      }
+    },
+    {
+      "componentId": "PAV-FINIAL-02",
+      "componentNameZh": "宝顶刹杆",
+      "componentNameEn": "Finial stem",
+      "componentType": "RIDGE",
+      "path": "components/PAV-FINIAL-02.stl",
+      "originalPositionMm": [
+        0,
+        11590,
+        0
+      ],
+      "explodedPositionMm": [
+        -773.439,
+        26890,
+        -204.433
+      ],
+      "triangles": 48,
+      "bytes": 2484,
+      "boundsMm": {
+        "min": {
+          "x": -260,
+          "y": 11065,
+          "z": -260
+        },
+        "max": {
+          "x": 260,
+          "y": 12115,
+          "z": 260
+        },
+        "size": {
+          "x": 520,
+          "y": 1050,
+          "z": 520
+        }
+      }
+    },
+    {
+      "componentId": "PAV-FINIAL-03",
+      "componentNameZh": "宝顶宝珠",
+      "componentNameEn": "Finial pearl",
+      "componentType": "RIDGE",
+      "path": "components/PAV-FINIAL-03.stl",
+      "originalPositionMm": [
+        0,
+        12320,
+        0
+      ],
+      "explodedPositionMm": [
+        302.382,
+        27620,
+        -740.652
+      ],
+      "triangles": 468,
+      "bytes": 23484,
+      "boundsMm": {
+        "min": {
+          "x": -420,
+          "y": 11900,
+          "z": -413.619
+        },
+        "max": {
+          "x": 420,
+          "y": 12740,
+          "z": 413.619
+        },
+        "size": {
+          "x": 840,
+          "y": 840,
+          "z": 827.239
+        }
+      }
+    }
+  ]
+}

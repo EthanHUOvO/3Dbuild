@@ -522,6 +522,15 @@ a {
   font-size: 7px;
 }
 
+.cad-card > small a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.cad-card > small a:hover {
+  text-decoration: underline;
+}
+
 .stl-card {
   background:
     linear-gradient(145deg, rgba(213, 170, 83, 0.12), transparent 62%),

@@ -8,11 +8,11 @@ import { STLExporter } from "three/examples/jsm/exporters/STLExporter.js";
 
 const PROJECT_DIR = process.cwd();
 const OUTPUT_DIR = resolve(PROJECT_DIR, "public/stl");
-const COMPONENT_DIR = resolve(OUTPUT_DIR, "components");
-const SYSTEM_DIR = resolve(OUTPUT_DIR, "systems");
+const SCALED_OUTPUT_DIR = resolve(PROJECT_DIR, "public/stl-40cm");
 const TEMP_BUNDLE = resolve(PROJECT_DIR, "work/stl/PavilionBuilder.bundle.mjs");
 const MILLIMETRES_PER_MODEL_UNIT = 1000;
 const ROOF_PANEL_THICKNESS = 0.09;
+const TARGET_ASSEMBLED_HEIGHT_MM = 400;
 
 const SYSTEMS = [
   { file: "01_foundation.stl", types: ["FOUNDATION"], label: "Stone foundation" },
@@ -84,18 +84,20 @@ function createExportGroup(components, options = {}) {
     group.add(clone);
   });
   solidifyRoofPanels(group);
-  group.scale.setScalar(MILLIMETRES_PER_MODEL_UNIT);
+  group.scale.setScalar(options.modelToMillimetres ?? MILLIMETRES_PER_MODEL_UNIT);
+  group.position.y = options.translateYMm ?? 0;
   group.updateMatrixWorld(true);
   return group;
 }
 
-function createSingleComponentGroup(component) {
+function createSingleComponentGroup(component, options = {}) {
   const group = new THREE.Group();
   const clone = component.object.clone(true);
   clone.position.copy(component.data.originalPosition);
   group.add(clone);
   solidifyRoofPanels(group);
-  group.scale.setScalar(MILLIMETRES_PER_MODEL_UNIT);
+  group.scale.setScalar(options.modelToMillimetres ?? MILLIMETRES_PER_MODEL_UNIT);
+  group.position.y = options.translateYMm ?? 0;
   group.updateMatrixWorld(true);
   return group;
 }
@@ -223,9 +225,6 @@ async function writeZipPackage(entries, destination) {
 }
 
 await mkdir(resolve(PROJECT_DIR, "work/stl"), { recursive: true });
-await mkdir(OUTPUT_DIR, { recursive: true });
-await mkdir(COMPONENT_DIR, { recursive: true });
-await mkdir(SYSTEM_DIR, { recursive: true });
 
 await bundle({
   entryPoints: [resolve(PROJECT_DIR, "src/pavilion/PavilionBuilder.ts")],
@@ -240,122 +239,191 @@ await bundle({
 
 const { PavilionBuilder } = await import(`${pathToFileURL(TEMP_BUNDLE).href}?v=${Date.now()}`);
 const pavilion = new PavilionBuilder().build();
-const manifest = {
-  format: "Binary STL",
-  units: "millimetres",
-  modelSpaceScale: "1:1",
-  sourceModel: "Abstract Octagonal Timber Pavilion",
-  componentCount: pavilion.components.length,
-  roofPanelSolidificationMm: ROOF_PANEL_THICKNESS * MILLIMETRES_PER_MODEL_UNIT,
-  assembled: null,
-  exploded: null,
-  systems: [],
-  components: [],
-};
-const archiveEntries = [];
+const sourceAssembled = createExportGroup(pavilion.components, { modelToMillimetres: 1 });
+const sourceBounds = new THREE.Box3().setFromObject(sourceAssembled);
+const sourceHeight = sourceBounds.max.y - sourceBounds.min.y;
+const scaledModelToMillimetres = TARGET_ASSEMBLED_HEIGHT_MM / sourceHeight;
+const scaledTranslateYMm = -sourceBounds.min.y * scaledModelToMillimetres;
 
-async function writeStl(relativePath, object, label) {
-  const absolutePath = resolve(OUTPUT_DIR, relativePath);
-  const buffer = stlBuffer(object, label);
-  const audit = inspectBinaryStl(buffer);
-  await writeFile(absolutePath, buffer);
-  archiveEntries.push({ absolutePath, archivePath: relativePath });
-  return audit;
-}
+const PROFILES = [
+  {
+    name: "Original full-size export",
+    outputDir: OUTPUT_DIR,
+    assembledFile: "pavilion_complete_assembled_mm.stl",
+    explodedFile: "pavilion_complete_exploded_mm.stl",
+    packageFile: "pavilion_stl_package_mm.zip",
+    modelToMillimetres: MILLIMETRES_PER_MODEL_UNIT,
+    translateYMm: 0,
+    targetHeightMm: null,
+  },
+  {
+    name: "Uniform 40 cm height export",
+    outputDir: SCALED_OUTPUT_DIR,
+    assembledFile: "pavilion_complete_assembled_h40cm_mm.stl",
+    explodedFile: "pavilion_complete_exploded_h40cm_mm.stl",
+    packageFile: "pavilion_stl_package_h40cm_mm.zip",
+    modelToMillimetres: scaledModelToMillimetres,
+    translateYMm: scaledTranslateYMm,
+    targetHeightMm: TARGET_ASSEMBLED_HEIGHT_MM,
+  },
+];
 
-manifest.assembled = await writeStl(
-  "pavilion_complete_assembled_mm.stl",
-  createExportGroup(pavilion.components),
-  "COMPLETE ASSEMBLED",
-);
-manifest.exploded = await writeStl(
-  "pavilion_complete_exploded_mm.stl",
-  createExportGroup(pavilion.components, { exploded: true }),
-  "COMPLETE EXPLODED",
-);
-
-for (const system of SYSTEMS) {
-  const matching = pavilion.components.filter(({ data }) => system.types.includes(data.componentType));
-  const relativePath = `systems/${system.file}`;
-  const audit = await writeStl(
-    relativePath,
-    createExportGroup(matching),
-    system.label.toUpperCase(),
-  );
-  manifest.systems.push({
-    ...system,
-    path: relativePath,
-    componentCount: matching.length,
-    ...audit,
+function scalePosition(position, profile) {
+  return position.toArray().map((value, index) => {
+    const translated = value * profile.modelToMillimetres
+      + (index === 1 ? profile.translateYMm : 0);
+    return Number(translated.toFixed(3));
   });
 }
 
-for (const component of pavilion.components) {
-  const relativePath = `components/${sanitizeFileName(component.data.componentId)}.stl`;
-  const audit = await writeStl(
-    relativePath,
-    createSingleComponentGroup(component),
-    component.data.componentId,
+async function exportProfile(profile) {
+  const componentDir = resolve(profile.outputDir, "components");
+  const systemDir = resolve(profile.outputDir, "systems");
+  await mkdir(profile.outputDir, { recursive: true });
+  await mkdir(componentDir, { recursive: true });
+  await mkdir(systemDir, { recursive: true });
+
+  const uniformScaleFromOriginal = profile.modelToMillimetres / MILLIMETRES_PER_MODEL_UNIT;
+  const manifest = {
+    format: "Binary STL",
+    units: "millimetres",
+    importUnits: "millimetres",
+    sourceModel: "Abstract Octagonal Timber Pavilion",
+    exportProfile: profile.name,
+    componentCount: pavilion.components.length,
+    uniformScaleFromOriginal: Number(uniformScaleFromOriginal.toFixed(9)),
+    approximateScaleRatio: `1:${(1 / uniformScaleFromOriginal).toFixed(6)}`,
+    targetAssembledHeightMm: profile.targetHeightMm,
+    assembledBaseAtYZero: profile.targetHeightMm !== null,
+    roofPanelSolidificationMm: Number(
+      (ROOF_PANEL_THICKNESS * profile.modelToMillimetres).toFixed(3),
+    ),
+    assembled: null,
+    exploded: null,
+    systems: [],
+    components: [],
+  };
+  const archiveEntries = [];
+
+  async function writeStl(relativePath, object, label) {
+    const absolutePath = resolve(profile.outputDir, relativePath);
+    const buffer = stlBuffer(object, label);
+    const audit = inspectBinaryStl(buffer);
+    await writeFile(absolutePath, buffer);
+    archiveEntries.push({ absolutePath, archivePath: relativePath });
+    return audit;
+  }
+
+  const transform = {
+    modelToMillimetres: profile.modelToMillimetres,
+    translateYMm: profile.translateYMm,
+  };
+  manifest.assembled = await writeStl(
+    profile.assembledFile,
+    createExportGroup(pavilion.components, transform),
+    profile.targetHeightMm ? "COMPLETE ASSEMBLED H40CM" : "COMPLETE ASSEMBLED",
   );
-  manifest.components.push({
-    componentId: component.data.componentId,
-    componentNameZh: component.data.componentNameZh,
-    componentNameEn: component.data.componentNameEn,
-    componentType: component.data.componentType,
-    path: relativePath,
-    originalPositionMm: component.data.originalPosition
-      .toArray()
-      .map((value) => Number((value * MILLIMETRES_PER_MODEL_UNIT).toFixed(3))),
-    explodedPositionMm: component.data.explodedPosition
-      .toArray()
-      .map((value) => Number((value * MILLIMETRES_PER_MODEL_UNIT).toFixed(3))),
-    ...audit,
-  });
+  manifest.exploded = await writeStl(
+    profile.explodedFile,
+    createExportGroup(pavilion.components, { ...transform, exploded: true }),
+    profile.targetHeightMm ? "COMPLETE EXPLODED H40CM" : "COMPLETE EXPLODED",
+  );
+
+  for (const system of SYSTEMS) {
+    const matching = pavilion.components.filter(({ data }) => system.types.includes(data.componentType));
+    const relativePath = `systems/${system.file}`;
+    const audit = await writeStl(
+      relativePath,
+      createExportGroup(matching, transform),
+      system.label.toUpperCase(),
+    );
+    manifest.systems.push({
+      ...system,
+      path: relativePath,
+      componentCount: matching.length,
+      ...audit,
+    });
+  }
+
+  for (const component of pavilion.components) {
+    const relativePath = `components/${sanitizeFileName(component.data.componentId)}.stl`;
+    const audit = await writeStl(
+      relativePath,
+      createSingleComponentGroup(component, transform),
+      component.data.componentId,
+    );
+    manifest.components.push({
+      componentId: component.data.componentId,
+      componentNameZh: component.data.componentNameZh,
+      componentNameEn: component.data.componentNameEn,
+      componentType: component.data.componentType,
+      path: relativePath,
+      originalPositionMm: scalePosition(component.data.originalPosition, profile),
+      explodedPositionMm: scalePosition(component.data.explodedPosition, profile),
+      ...audit,
+    });
+  }
+
+  const manifestPath = resolve(profile.outputDir, "pavilion_stl_manifest.json");
+  await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
+  archiveEntries.push({ absolutePath: manifestPath, archivePath: "pavilion_stl_manifest.json" });
+
+  const readmePath = resolve(profile.outputDir, "README.txt");
+  const size = manifest.assembled.boundsMm.size;
+  await writeFile(
+    readmePath,
+    [
+      "OCTAGONAL PAVILION STL PACKAGE",
+      "",
+      "UNITS AND SCALE",
+      "- All coordinates are exported in millimetres.",
+      "- STL does not store a unit declaration. Choose millimetres when importing.",
+      `- Export profile: ${profile.name}.`,
+      `- Uniform scale from original: ${uniformScaleFromOriginal.toFixed(9)} (${manifest.approximateScaleRatio}).`,
+      `- Assembled bounds: ${size.x} x ${size.z} x ${size.y} mm (X x Z x Y).`,
+      ...(profile.targetHeightMm
+        ? [
+            `- The assembled base is translated to Y=0 and the highest point is Y=${profile.targetHeightMm} mm (${profile.targetHeightMm / 10} cm).`,
+          ]
+        : []),
+      "",
+      "PRIMARY FILES",
+      `- ${profile.assembledFile}: complete pavilion in assembly coordinates`,
+      `- ${profile.explodedFile}: complete exploded-view mesh`,
+      "- systems/*.stl: ten building-system groups in assembly coordinates",
+      "- components/*.stl: 91 individually selectable component meshes",
+      "- pavilion_stl_manifest.json: component IDs, positions, triangle counts and bounds",
+      "",
+      "RHINO",
+      "- File > Import, select STL, and set model units to millimetres.",
+      "- Use SplitDisjointMesh or the system/component files when separate editing is needed.",
+      "",
+      "MESH NOTE",
+      `- The eight roof sectors are solidified to ${manifest.roofPanelSolidificationMm} mm after uniform scaling.`,
+      "- Other pieces retain the original Three.js primitive geometry.",
+      "",
+      "DISCLAIMER",
+      "- This is a procedural concept model, not a surveyed or construction-certified model.",
+      "- Verify wall thicknesses, joints, tolerances and print scale before fabrication.",
+      "",
+    ].join("\r\n"),
+    "utf8",
+  );
+  archiveEntries.push({ absolutePath: readmePath, archivePath: "README.txt" });
+
+  await writeZipPackage(archiveEntries, resolve(profile.outputDir, profile.packageFile));
+  return manifest;
 }
 
-const manifestPath = resolve(OUTPUT_DIR, "pavilion_stl_manifest.json");
-await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
-archiveEntries.push({ absolutePath: manifestPath, archivePath: "pavilion_stl_manifest.json" });
+const exportedProfiles = [];
+for (const profile of PROFILES) {
+  exportedProfiles.push({ profile, manifest: await exportProfile(profile) });
+}
 
-const readmePath = resolve(OUTPUT_DIR, "README.txt");
-await writeFile(
-  readmePath,
-  [
-    "OCTAGONAL PAVILION STL PACKAGE",
-    "",
-    "UNITS",
-    "- All coordinates are exported in millimetres.",
-    "- STL does not store a unit declaration. Choose millimetres when importing.",
-    "",
-    "PRIMARY FILES",
-    "- pavilion_complete_assembled_mm.stl: complete pavilion in assembly coordinates",
-    "- pavilion_complete_exploded_mm.stl: complete exploded-view mesh",
-    "- systems/*.stl: ten building-system groups in assembly coordinates",
-    "- components/*.stl: 91 individually selectable component meshes",
-    "- pavilion_stl_manifest.json: component IDs, positions, triangle counts and bounds",
-    "",
-    "RHINO",
-    "- File > Import, select STL, and set model units to millimetres.",
-    "- Use SplitDisjointMesh or the system/component files when separate editing is needed.",
-    "",
-    "MESH NOTE",
-    `- The eight programmatic roof surface sectors are solidified to ${ROOF_PANEL_THICKNESS * MILLIMETRES_PER_MODEL_UNIT} mm for STL export.`,
-    "- Other pieces retain the original Three.js primitive geometry.",
-    "",
-    "DISCLAIMER",
-    "- This is a procedural concept model, not a surveyed or construction-certified model.",
-    "- Verify wall thicknesses, joints, tolerances and print scale before fabrication.",
-    "",
-  ].join("\r\n"),
-  "utf8",
-);
-archiveEntries.push({ absolutePath: readmePath, archivePath: "README.txt" });
-
-await writeZipPackage(archiveEntries, resolve(OUTPUT_DIR, "pavilion_stl_package_mm.zip"));
-
-console.log(
-  `Generated ${pavilion.components.length} component STL files, ${SYSTEMS.length} system STL files, and 2 complete STL files.`,
-);
-console.log(
-  `Assembled mesh: ${manifest.assembled.triangles} triangles, ${manifest.assembled.boundsMm.size.x} x ${manifest.assembled.boundsMm.size.z} x ${manifest.assembled.boundsMm.size.y} mm (X x Z x Y).`,
-);
+for (const { profile, manifest } of exportedProfiles) {
+  const size = manifest.assembled.boundsMm.size;
+  console.log(
+    `${profile.name}: ${pavilion.components.length} components, ${SYSTEMS.length} systems, `
+      + `${manifest.assembled.triangles} triangles, ${size.x} x ${size.z} x ${size.y} mm (X x Z x Y).`,
+  );
+}

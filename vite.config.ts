@@ -38,6 +38,7 @@ export default defineConfig({
             main: resolve(process.cwd(), "index.html"),
             pavilion: resolve(process.cwd(), "pavilion.html"),
             restroom: resolve(process.cwd(), "restroom.html"),
+            workerRoom: resolve(process.cwd(), "worker-room.html"),
           },
         },
       },

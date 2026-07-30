@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="简易工人居住样板间的模块化构件、爆炸装配与排产任务演示" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Worker Housing Sample Room Assembly" />
+    <meta property="og:description" content="基础、墙体、屋顶、门窗与生活设施的程序化爆炸装配演示" />
+    <title>Worker Housing Sample Room Assembly</title>
+  </head>
+  <body>
+    <div class="worker-shell">
+      <header class="worker-topbar">
+        <div class="worker-brand">
+          <div class="worker-mark" aria-hidden="true"><span>WR</span></div>
+          <div>
+            <span>MODULAR HOUSING ASSEMBLY · 04</span>
+            <h1>Worker Housing Sample Room</h1>
+            <p>简易工人居住样板间 · 爆炸装配与排产任务演示</p>
+          </div>
+        </div>
+        <nav class="model-tabs" aria-label="模型切换">
+          <a href="/">大殿 · 252</a>
+          <a href="/pavilion.html">凉亭 · 91</a>
+          <a href="/restroom.html">公共厕所 · 88</a>
+          <a class="active" href="/worker-room.html">工人样板间 · <span id="tab-count">—</span></a>
+        </nav>
+        <div class="worker-status">
+          <div><strong id="visible-count">—</strong><span>VISIBLE</span></div>
+          <div><strong id="total-count">—</strong><span>COMPONENTS</span></div>
+          <div class="health-indicator"><i></i><span>支撑语义有效</span></div>
+        </div>
+      </header>
+
+      <main class="worker-workspace">
+        <aside class="worker-panel worker-left">
+          <section>
+            <div class="panel-heading">
+              <span>01</span>
+              <div><h2>基本构件</h2><small>COMPONENT SYSTEMS</small></div>
+              <button id="show-all">全部显示</button>
+            </div>
+            <div id="type-filters" class="worker-filters"></div>
+          </section>
+
+          <section>
+            <div class="panel-heading">
+              <span>02</span>
+              <div><h2>显示分区</h2><small>DISPLAY ZONES</small></div>
+            </div>
+            <div class="zone-filters">
+              <label>
+                <input type="checkbox" data-zone="SHELL" checked />
+                <i></i><span><strong>建筑外壳</strong><small>STRUCTURAL SHELL</small></span><em>11 件</em>
+              </label>
+              <label>
+                <input type="checkbox" data-zone="LIVING" checked />
+                <i></i><span><strong>居住设施</strong><small>LIVING FIXTURES</small></span><em>5 件</em>
+              </label>
+            </div>
+          </section>
+
+          <section class="model-card">
+            <span>SAMPLE ROOM PROFILE</span>
+            <strong>6.0 m × 3.6 m 单层模块房</strong>
+            <dl>
+              <div><dt>使用人数</dt><dd>2 人</dd></div>
+              <div><dt>基本构件</dt><dd>16 件</dd></div>
+              <div><dt>装配阶段</dt><dd>6 步</dd></div>
+              <div><dt>计划工期</dt><dd>3.5 天</dd></div>
+            </dl>
+            <p>仅展示建造与居住所需的最基本构件，不作为正式施工图或结构计算依据。</p>
+          </section>
+        </aside>
+
+        <section id="viewport" class="worker-viewport" aria-label="简易工人样板间三维场景">
+          <canvas id="scene-canvas"></canvas>
+          <div id="loading" class="worker-loading">
+            <div class="module-loader"><i></i><i></i><i></i></div>
+            <strong>正在生成样板间构件</strong>
+            <span>FOUNDATION · WALLS · ROOF · FIXTURES</span>
+          </div>
+          <div class="viewport-caption">
+            <span>MODEL / 04</span>
+            <strong id="view-label">完整样板间 · AXONOMETRIC</strong>
+          </div>
+          <div class="view-tools">
+            <button id="reset-camera" title="重置视角">⌂</button>
+            <button id="interior-view" title="室内视角">◫</button>
+            <button id="toggle-grid" title="分析网格">#</button>
+            <button id="help-button" title="帮助">?</button>
+          </div>
+          <div class="model-legend">
+            <span><i class="shell"></i>建筑外壳</span>
+            <span><i class="living"></i>居住设施</span>
+            <span><i class="selected"></i>选中构件</span>
+          </div>
+          <div id="help-panel" class="worker-help hidden">
+            <strong>交互操作</strong>
+            <p>左键旋转 · 滚轮缩放 · 右键平移</p>
+            <p>悬停高亮 · 单击选择 · 空白处取消</p>
+            <p>底部滑块控制整体爆炸；自动拆装按六个阶段执行。</p>
+            <button id="close-help">知道了</button>
+          </div>
+          <div id="toast" class="worker-toast" role="status"></div>
+        </section>
+
+        <aside class="worker-panel worker-right">
+          <section>
+            <div class="panel-heading">
+              <span>03</span>
+              <div><h2>构件档案</h2><small>SEMANTIC RECORD</small></div>
+              <em id="selection-state">0 SELECTED</em>
+            </div>
+            <div id="empty-selection" class="worker-empty">
+              <div>+</div>
+              <strong>选择一个样板间构件</strong>
+              <p>查看编号、材料、尺寸、任务编号以及支撑和连接关系。</p>
+            </div>
+            <div id="component-details" class="worker-details hidden">
+              <div class="detail-title">
+                <span id="component-type">WALL</span>
+                <h3 id="component-name">墙体模块</h3>
+                <em id="component-status">ACTIVE</em>
+              </div>
+              <dl>
+                <div><dt>稳定编号</dt><dd id="component-id">—</dd></div>
+                <div><dt>显示分区</dt><dd id="component-zone">—</dd></div>
+                <div><dt>建筑系统</dt><dd id="component-system">—</dd></div>
+                <div><dt>材料</dt><dd id="component-material">—</dd></div>
+                <div><dt>规格尺寸</dt><dd id="component-dimensions">—</dd></div>
+                <div><dt>排产任务</dt><dd id="component-task">—</dd></div>
+                <div><dt>装配层 / 步骤</dt><dd id="component-layer">—</dd></div>
+                <div><dt>原始坐标</dt><dd id="component-position">—</dd></div>
+              </dl>
+              <div class="detail-relations">
+                <span>SUPPORTED BY</span><p id="supported-by">—</p>
+                <span>CONNECTED TO</span><p id="connected-to">—</p>
+              </div>
+              <div id="selected-support-result" class="selected-support-result">
+                <i></i><div><small>FOUNDATION PATH</small><strong>PASS</strong></div>
+              </div>
+              <button id="isolate-layer">只查看当前构件层</button>
+            </div>
+          </section>
+
+          <section class="task-section">
+            <div class="panel-heading">
+              <span>04</span>
+              <div><h2>排产任务</h2><small>PRODUCTION TASKS</small></div>
+              <em id="task-summary">0 / 6 COMPLETED</em>
+            </div>
+            <div id="task-list" class="task-list"></div>
+            <div class="support-summary">
+              <span>有效基础支撑路径</span>
+              <strong id="support-count">—</strong>
+              <small id="support-note">正在校验构件支撑图</small>
+            </div>
+          </section>
+        </aside>
+      </main>
+
+      <footer class="worker-timeline">
+        <div class="timeline-title">
+          <span>EXPLODED ASSEMBLY</span>
+          <strong id="assembly-state">完整状态</strong>
+          <small id="assembly-step">STEP 00 / 06</small>
+        </div>
+        <div class="slider-area">
+          <div><span>完整</span><strong id="explosion-value">0%</strong><span>爆炸</span></div>
+          <input id="explosion-slider" type="range" min="0" max="100" value="0" aria-label="爆炸程度" />
+          <div id="stage-track" class="worker-stages"></div>
+        </div>
+        <div class="worker-controls">
+          <button id="complete-state">完整状态</button>
+          <button id="auto-assemble">自动装配</button>
+          <button id="pause-resume" class="pause-button" title="暂停或继续">Ⅱ</button>
+          <button id="auto-disassemble">自动拆解</button>
+          <button id="full-explode">全部爆炸</button>
+          <button id="reset-model" class="reset-button">重置</button>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="/src/workerRoomMain.ts"></script>
+  </body>
+</html>
